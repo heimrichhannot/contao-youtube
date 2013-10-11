@@ -1,0 +1,20 @@
+<!-- indexer::stop -->
+<div class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+	<?php if ($this->addPreviewImage): ?>
+	<div class="video-thumbnail">
+		<img src="<?php echo $this->imgHeader; ?>">
+		<div class="image">
+			<img src="<?php echo $this->imgPreview; ?>">
+			<?php if ($this->addPlayButton): ?>
+				<div class="play-button"></div>
+			<?php endif; ?>
+		</div>
+	</div>
+	<?php endif; ?>
+	
+	<div class="video-container" style="display: none;">
+		<iframe id="<?php echo $this->iFrameId; ?>" type="text/html" src="https://www.youtube.com/embed/<?php echo $this->videoId; ?>?rel=<?php echo $this->ytShowRelated ? $this->ytShowRelated : '0'; ?>&modestbranding=<?php echo $this->ytModestBranding ? $this->ytModestBranding : '0'; ?>&showinfo=<?php echo $this->ytShowInfo ? $this->ytShowInfo : '0'; ?><?php echo ($this->ytHd ? '&vq=hd' . $this->ytHd : ''); ?>" allowfullscreen frameborder="0">
+		</iframe>
+	</div>
+</div>
+<!-- indexer::continue -->
