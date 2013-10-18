@@ -1,9 +1,20 @@
 <?php if (!defined('TL_ROOT')) die('You cannot access this file directly!');
 
-$dc = &$GLOBALS['TL_DCA']['tl_content'];
-$dc['palettes']['responsive_youtube_video'] = '{title_legend},type,name,headline;{previewImage_legend},addPreviewImage;{video_legend},videoId,videoLength,ytHd,ytShowRelated,ytModestBranding,ytShowInfo;{expert_legend:hide},cssID,space;';
-$dc['palettes']['__selector__'][] = 'addPreviewImage';
-$dc['subpalettes']['addPreviewImage'] = 'imgHeader,imgPreview,addPlayButton';
+$dc = &$GLOBALS['TL_DCA']['tl_news'];
+
+$dc['palettes']['default'] = str_replace('{image_legend}', '{responsiveYouTubeVideo_legend},addResponsiveYouTubeVideo;{image_legend}', $dc['palettes']['default']);
+
+$dc['subpalettes']['addResponsiveYouTubeVideo'] = 'addPreviewImage,imgHeader,imgPreview,addPlayButton,videoId,videoLength,ytHd,ytShowRelated,ytModestBranding,ytShowInfo';
+$dc['palettes']['__selector__'][] = 'addResponsiveYouTubeVideo';
+
+$dc['fields']['addResponsiveYouTubeVideo'] = array
+(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_content']['addResponsiveYouTubeVideo'],
+		'exclude'                 => true,
+		'inputType'               => 'checkbox',
+		'eval'					  => array('submitOnChange' => true),
+		'sql'                     => "char(1) NOT NULL default ''"
+);
 
 $dc['fields']['addPreviewImage'] = array
 (
@@ -49,7 +60,7 @@ $dc['fields']['videoId'] = array
 	'sorting'                 => true,
 	'flag'                    => 1,
 	'inputType'               => 'text',
-	'eval'                    => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
+	'eval'                    => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50 clr'),
 	'sql'                     => "varchar(255) NOT NULL default ''"
 );
 

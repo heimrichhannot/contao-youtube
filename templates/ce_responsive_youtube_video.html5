@@ -2,7 +2,7 @@
 <div class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
 	<?php if ($this->addPreviewImage): ?>
 	<div class="video-thumbnail">
-		<img src="<?php echo $this->imgHeader; ?>">
+		<img class="header" src="<?php echo $this->imgHeader; ?>">
 		<div class="image">
 			<img src="<?php echo $this->imgPreview; ?>">
 			<?php if ($this->addPlayButton): ?>

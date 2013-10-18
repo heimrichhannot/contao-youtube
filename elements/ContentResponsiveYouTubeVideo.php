@@ -30,7 +30,7 @@ class ContentResponsiveYouTubeVideo extends \ContentElement
 		}
 	}
 	
-	protected static function getImagePath($id) {
+	public static function getImagePath($id) {
 		$objModel = \FilesModel::findByPk($id);
 		
 		if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path))
