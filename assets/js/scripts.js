@@ -11,6 +11,7 @@
 				$iframe.css('height', 0);
 				$video.show();
 				$iframe.attr('src', $iframe.attr('src') + '&autoplay=1');
+				$('embed').attr('flashvars', $('embed').attr('flashvars').replace('&autoplay=1', ''));
 //				responsiveYouTubeVideo.callPlayer($iframe.attr('id'), function() {
 					// This function runs onYouTubePlayerReady
 //					responsiveYouTubeVideo.callPlayer($iframe.attr('id'), "playVideo");
