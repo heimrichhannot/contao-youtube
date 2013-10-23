@@ -7,7 +7,7 @@
 				var cloned = $(this).clone();
 				$(this).after(cloned);
 				$(this).remove();
-			}
+			});
 			$('.ce_responsive_youtube_video .video-thumbnail').on('click', function() {
 				var $this = $(this),
 					$video = $this.parent().find('.video-container'),
