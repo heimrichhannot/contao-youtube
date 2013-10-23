@@ -3,12 +3,11 @@
 	responsiveYouTubeVideo = {
 		onReady : function() {
 			// prevent videos from playing after clicking the browser's back button
-			console.log($('embed'));
-			console.log($('embed').attr('flashvars'));
-			if ($('embed').length > 0)
-			console.log($('embed').attr('flashvars').replace('&autoplay=1', ''));
-			if ($('embed').length > 0)
-				$('embed').attr('flashvars', $('embed').attr('flashvars').replace('&autoplay=1', ''));
+			$('.ce_responsive_youtube_video .video-thumbnail iframe').each(function() {
+				var cloned = $(this).clone();
+				$(this).after(cloned);
+				$(this).remove();
+			}
 			$('.ce_responsive_youtube_video .video-thumbnail').on('click', function() {
 				var $this = $(this),
 					$video = $this.parent().find('.video-container'),
