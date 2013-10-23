@@ -2,18 +2,12 @@
 	
 	responsiveYouTubeVideo = {
 		onReady : function() {
-			// prevent videos from playing after clicking the browser's back button
-			$('.ce_responsive_youtube_video .video-thumbnail iframe').each(function() {
-				var cloned = $(this).clone();
-				$(this).after(cloned);
-				$(this).remove();
-			});
 			$('.ce_responsive_youtube_video .video-thumbnail').on('click', function() {
 				var $this = $(this),
 					$video = $this.parent().find('.video-container'),
 					$iframe = $video.find('iframe');
 				$video.css('height', 0);
-				$video.css('padding', 0)
+				$video.css('padding', 0);
 				$iframe.css('height', 0);
 				$video.show();
 				$iframe.attr('src', $iframe.attr('src') + '&autoplay=1');
