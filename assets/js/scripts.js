@@ -5,6 +5,7 @@
 			// prevent videos from playing after clicking the browser's back button
 			console.log($('embed'));
 			console.log($('embed').attr('flashvars'));
+			if ($('embed').length > 0)
 			console.log($('embed').attr('flashvars').replace('&autoplay=1', ''));
 			if ($('embed').length > 0)
 				$('embed').attr('flashvars', $('embed').attr('flashvars').replace('&autoplay=1', ''));
