@@ -19,8 +19,8 @@
 				$iframe.delay(1000).queue(function(next) {
 					$this.hide();
 					$video.css('height', 'auto');
-					$video.css('padding-bottom', '56.25%')
-					$video.css('padding-top', '30px')
+					$video.css('padding-bottom', '56.25%');
+					$video.css('padding-top', '30px');
 					$(this).css('height', '100%'); 
 					next();
 				});
