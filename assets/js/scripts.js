@@ -15,7 +15,6 @@
 					// This function runs onYouTubePlayerReady
 //					responsiveYouTubeVideo.callPlayer($iframe.attr('id'), "playVideo");
 //				});
-				
 				$iframe.delay(1000).queue(function(next) {
 					$this.hide();
 					$video.css('height', 'auto');
