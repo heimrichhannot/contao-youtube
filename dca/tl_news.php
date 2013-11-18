@@ -4,7 +4,7 @@ $dc = &$GLOBALS['TL_DCA']['tl_news'];
 
 $dc['palettes']['default'] = str_replace('{image_legend}', '{responsiveYouTubeVideo_legend},addResponsiveYouTubeVideo;{image_legend}', $dc['palettes']['default']);
 
-$dc['subpalettes']['addResponsiveYouTubeVideo'] = 'addPreviewImage,imgHeader,imgPreview,addPlayButton,videoId,videoLength,ytHd,ytShowRelated,ytModestBranding,ytShowInfo';
+$dc['subpalettes']['addResponsiveYouTubeVideo'] = 'addPreviewImage,imgHeader,imgPreview,addPlayButton,videoId,videoLength,ytHd,ytShowRelated,ytModestBranding,ytShowInfo,ytFullscreen';
 $dc['palettes']['__selector__'][] = 'addResponsiveYouTubeVideo';
 
 $dc['fields']['addResponsiveYouTubeVideo'] = array
@@ -107,6 +107,15 @@ $dc['fields']['ytModestBranding'] = array
 $dc['fields']['ytShowInfo'] = array
 (
 	'label'                   => &$GLOBALS['TL_LANG']['tl_content']['ytShowInfo'],
+	'exclude'                 => true,
+	'inputType'               => 'checkbox',
+	'eval'                    => array('tl_class' => 'w50'),
+	'sql'                     => "char(1) NOT NULL default ''"
+);
+
+$dc['fields']['ytFullscreen'] = array
+(
+	'label'                   => &$GLOBALS['TL_LANG']['tl_content']['ytFullscreen'],
 	'exclude'                 => true,
 	'inputType'               => 'checkbox',
 	'eval'                    => array('tl_class' => 'w50'),

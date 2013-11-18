@@ -25,4 +25,4 @@ $GLOBALS['TL_LANG']['tl_content']['ytHd'] = array('Videoqualität erzwingen', 'W
 $GLOBALS['TL_LANG']['tl_content']['ytShowRelated'] = array('Ähnliche Videos anzeigen', 'Wählen Sie diese Option, wenn nach dem Abspielen des Videos ähnliche Videos angezeigt werden sollen.');
 $GLOBALS['TL_LANG']['tl_content']['ytModestBranding'] = array('YouTube-Branding ausblenden', 'Wählen Sie diese Option, wenn YouTube-Branding-Infos ausgeblendet werden sollen.');
 $GLOBALS['TL_LANG']['tl_content']['ytShowInfo'] = array('Video-Infos anzeigen', 'Wählen Sie diese Option, wenn Infos zum Video ausgeblendet werden sollen.');
-$GLOBALS['TL_LANG']['tl_content']['published'] = array('Video veröffentlichen', 'Das Video auf der Webseite anzeigen lassen.');
+$GLOBALS['TL_LANG']['tl_content']['ytFullscreen'] = array('Großansicht/Neues Fenster', 'Großansicht des Videos in einer Lightbox bzw. den Link in einem neuem Browserfenster öffnen.');
