@@ -4,7 +4,7 @@ $dc = &$GLOBALS['TL_DCA']['tl_news'];
 
 $dc['palettes']['default'] = str_replace('{image_legend}', '{responsiveYouTubeVideo_legend},addResponsiveYouTubeVideo;{image_legend}', $dc['palettes']['default']);
 
-$dc['subpalettes']['addResponsiveYouTubeVideo'] = 'addPreviewImage,imgHeader,imgPreview,addPlayButton,videoId,videoLength,ytHd,ytShowRelated,ytModestBranding,ytShowInfo,ytFullscreen';
+$dc['subpalettes']['addResponsiveYouTubeVideo'] = 'addPreviewImage,imgHeader,imgPreview,addPlayButton,videoId,videoLength,ytHd,ytShowRelated,ytModestBranding,ytShowInfo,ytFullscreen,ytLinkText';
 $dc['palettes']['__selector__'][] = 'addResponsiveYouTubeVideo';
 
 $dc['fields']['addResponsiveYouTubeVideo'] = array
@@ -39,7 +39,7 @@ $dc['fields']['imgPreview'] = array
 	'label'                   => &$GLOBALS['TL_LANG']['tl_content']['imgPreview'],
 	'exclude'                 => true,
 	'inputType'               => 'fileTree',
-	'eval'                    => array('filesOnly'=>true, 'extensions'=>$GLOBALS['TL_CONFIG']['validImageTypes'], 'fieldType'=>'radio', 'mandatory'=>true, 'tl_class' => 'w50'),
+	'eval'                    => array('filesOnly'=>true, 'extensions'=>$GLOBALS['TL_CONFIG']['validImageTypes'], 'fieldType'=>'radio', 'tl_class' => 'w50'),
 	'sql'                     => "varchar(255) NOT NULL default ''"
 );
 
@@ -120,4 +120,14 @@ $dc['fields']['ytFullscreen'] = array
 	'inputType'               => 'checkbox',
 	'eval'                    => array('tl_class' => 'w50'),
 	'sql'                     => "char(1) NOT NULL default ''"
+);
+
+$dc['fields']['ytLinkText'] = array
+(
+	'label'                   => &$GLOBALS['TL_LANG']['tl_content']['ytLinkText'],
+	'exclude'                 => true,
+	'flag'                    => 1,
+	'inputType'               => 'text',
+	'eval'                    => array('maxlength' => 255, 'tl_class' => 'w50 clr'),
+	'sql'                     => "varchar(255) NOT NULL default ''"
 );

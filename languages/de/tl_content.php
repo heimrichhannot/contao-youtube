@@ -26,3 +26,4 @@ $GLOBALS['TL_LANG']['tl_content']['ytShowRelated'] = array('Ähnliche Videos anz
 $GLOBALS['TL_LANG']['tl_content']['ytModestBranding'] = array('YouTube-Branding ausblenden', 'Wählen Sie diese Option, wenn YouTube-Branding-Infos ausgeblendet werden sollen.');
 $GLOBALS['TL_LANG']['tl_content']['ytShowInfo'] = array('Video-Infos anzeigen', 'Wählen Sie diese Option, wenn Infos zum Video ausgeblendet werden sollen.');
 $GLOBALS['TL_LANG']['tl_content']['ytFullscreen'] = array('Großansicht/Neues Fenster', 'Großansicht des Videos in einer Lightbox bzw. den Link in einem neuem Browserfenster öffnen.');
+$GLOBALS['TL_LANG']['tl_content']['ytLinkText'] = array('Link-Text', 'Der angezeigte Text des Links, der die Lightbox öffnet.');

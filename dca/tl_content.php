@@ -1,7 +1,7 @@
 <?php if (!defined('TL_ROOT')) die('You cannot access this file directly!');
 
 $dc = &$GLOBALS['TL_DCA']['tl_content'];
-$dc['palettes']['responsive_youtube_video'] = '{title_legend},type,name,headline;{previewImage_legend},addPreviewImage;{video_legend},videoId,videoLength,ytHd,ytShowRelated,ytModestBranding,ytShowInfo;{expert_legend:hide},cssID,space;';
+$dc['palettes']['responsive_youtube_video'] = '{title_legend},type,name,headline;{previewImage_legend},addPreviewImage;{video_legend},videoId,videoLength,ytHd,ytShowRelated,ytModestBranding,ytShowInfo,ytFullscreen,ytLinkText;{expert_legend:hide},cssID,space;';
 $dc['palettes']['__selector__'][] = 'addPreviewImage';
 $dc['subpalettes']['addPreviewImage'] = 'imgHeader,imgPreview,addPlayButton';
 
@@ -100,4 +100,23 @@ $dc['fields']['ytShowInfo'] = array
 	'inputType'               => 'checkbox',
 	'eval'                    => array('tl_class' => 'w50'),
 	'sql'                     => "char(1) NOT NULL default ''"
+);
+
+$dc['fields']['ytFullscreen'] = array
+(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_content']['ytFullscreen'],
+		'exclude'                 => true,
+		'inputType'               => 'checkbox',
+		'eval'                    => array('tl_class' => 'w50'),
+		'sql'                     => "char(1) NOT NULL default ''"
+);
+
+$dc['fields']['ytLinkText'] = array
+(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_content']['ytLinkText'],
+		'exclude'                 => true,
+		'flag'                    => 1,
+		'inputType'               => 'text',
+		'eval'                    => array('maxlength' => 255, 'tl_class' => 'w50 clr'),
+		'sql'                     => "varchar(255) NOT NULL default ''"
 );
