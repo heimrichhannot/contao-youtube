@@ -4,9 +4,6 @@
  * Legends
  */
 
-$GLOBALS['TL_LANG']['tl_content']['title_legend'] = 'Titel';
-$GLOBALS['TL_LANG']['tl_content']['previewImage_legend'] = 'Vorschaugrafik';
-$GLOBALS['TL_LANG']['tl_content']['video_legend'] = 'Videoeigenschaften';
 $GLOBALS['TL_LANG']['tl_content']['responsiveYouTubeVideo_legend'] = 'YouTube-Video-Einstellungen';
 
 /**
