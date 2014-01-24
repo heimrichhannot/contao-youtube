@@ -17,7 +17,9 @@
 	<?php else: ?>
 		<?php if ($this->addPreviewImage): ?>
 		<div class="video-thumbnail">
-			<img class="header" src="<?php echo $this->imgHeader; ?>">
+			<?php if ($this->imgHeader): ?>
+				<img class="header" src="<?php echo $this->imgHeader; ?>">
+			<?php endif; ?>
 			<div class="image">
 				<img src="<?php echo $this->imgPreview; ?>">
 				<?php if ($this->addPlayButton): ?>
