@@ -35,10 +35,10 @@
 					innerHeight: 390
 	      		});
 			-->
-			<a class="youtube cBoxElement hidden-phone" href="https://www.youtube.com/embed/<?php echo $this->videoId; ?>?rel=<?php echo $this->ytShowRelated ? $this->ytShowRelated : '0'; ?>&modestbranding=<?php echo $this->ytModestBranding ? $this->ytModestBranding : '0'; ?>&showinfo=<?php echo $this->ytShowInfo ? $this->ytShowInfo : '0'; ?><?php echo ($this->ytHd ? '&vq=hd' . $this->ytHd : ''); ?>">
+			<a class="youtube cBoxElement hidden-phone" href="https://www.youtube.com/embed/<?php echo $this->videoId; ?>?rel=<?php echo $this->ytShowRelated ? $this->ytShowRelated : '0'; ?>&modestbranding=<?php echo $this->ytModestBranding ? $this->ytModestBranding : '0'; ?>&showinfo=<?php echo $this->ytShowInfo ? $this->ytShowInfo : '0'; ?>">
 				<?php echo $this->ytLinkText; ?>
 			</a>
-			<a class="youtube visible-phone" href="http://www.youtube.com/watch?v=<?php echo $this->videoId; ?>?rel=<?php echo $this->ytShowRelated ? $this->ytShowRelated : '0'; ?>&modestbranding=<?php echo $this->ytModestBranding ? $this->ytModestBranding : '0'; ?>&showinfo=<?php echo $this->ytShowInfo ? $this->ytShowInfo : '0'; ?><?php echo ($this->ytHd ? '&vq=hd' . $this->ytHd : ''); ?>">
+			<a class="youtube visible-phone" href="http://www.youtube.com/watch?v=<?php echo $this->videoId; ?>?rel=<?php echo $this->ytShowRelated ? $this->ytShowRelated : '0'; ?>&modestbranding=<?php echo $this->ytModestBranding ? $this->ytModestBranding : '0'; ?>&showinfo=<?php echo $this->ytShowInfo ? $this->ytShowInfo : '0'; ?>">
 				<?php echo $this->ytLinkText; ?>
 			</a>
 		<?php else: ?>
@@ -61,7 +61,7 @@
 			</div>
 			<?php endif; ?>
 			<div class="video-container" style="display: none;">
-				<iframe id="<?php echo $this->iFrameId; ?>" type="text/html" src="https://www.youtube.com/embed/<?php echo $this->videoId; ?>?rel=<?php echo $this->ytShowRelated ? $this->ytShowRelated : '0'; ?>&modestbranding=<?php echo $this->ytModestBranding ? $this->ytModestBranding : '0'; ?>&showinfo=<?php echo $this->ytShowInfo ? $this->ytShowInfo : '0'; ?><?php echo ($this->ytHd ? '&vq=hd' . $this->ytHd : ''); ?>" allowfullscreen frameborder="0">
+				<iframe id="<?php echo $this->iFrameId; ?>" type="text/html" src="https://www.youtube.com/embed/<?php echo $this->videoId; ?>?rel=<?php echo $this->ytShowRelated ? $this->ytShowRelated : '0'; ?>&modestbranding=<?php echo $this->ytModestBranding ? $this->ytModestBranding : '0'; ?>&showinfo=<?php echo $this->ytShowInfo ? $this->ytShowInfo : '0'; ?>" allowfullscreen frameborder="0">
 				</iframe>
 			</div>
 		<?php endif; ?>
