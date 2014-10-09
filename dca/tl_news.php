@@ -39,7 +39,7 @@ $dc['fields']['imgHeader'] = array
 	'exclude'                 => true,
 	'inputType'               => 'fileTree',
 	'eval'                    => array('filesOnly'=>true, 'extensions'=>$GLOBALS['TL_CONFIG']['validImageTypes'], 'fieldType'=>'radio', 'tl_class' => 'w50'),
-	'sql'                     => "varchar(255) NOT NULL default ''"
+	'sql'                     => "binary(16) NULL"
 );
 
 $dc['fields']['imgPreview'] = array
@@ -48,7 +48,7 @@ $dc['fields']['imgPreview'] = array
 	'exclude'                 => true,
 	'inputType'               => 'fileTree',
 	'eval'                    => array('filesOnly'=>true, 'extensions'=>$GLOBALS['TL_CONFIG']['validImageTypes'], 'fieldType'=>'radio', 'tl_class' => 'w50', 'mandatory' => true),
-	'sql'                     => "varchar(255) NOT NULL default ''"
+	'sql'                     => "binary(16) NULL"
 );
 
 $dc['fields']['addPlayButton'] = array
