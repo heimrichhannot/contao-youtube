@@ -19,7 +19,7 @@ $dc['fields']['imgHeader'] = array
 	'label'                   => &$GLOBALS['TL_LANG']['tl_content']['imgHeader'],
 	'exclude'                 => true,
 	'inputType'               => 'fileTree',
-	'eval'                    => array('filesOnly'=>true, 'extensions'=>$GLOBALS['TL_CONFIG']['validImageTypes'], 'fieldType'=>'radio', 'tl_class' => 'w50'),
+	'eval'                    => array('filesOnly'=>true, 'extensions'=>$GLOBALS['TL_CONFIG']['validImageTypes'], 'nullIfEmpty' => true, 'fieldType'=>'radio', 'tl_class' => 'w50'),
 	'sql'                     => "binary(16) NULL"
 );
 
@@ -28,7 +28,7 @@ $dc['fields']['imgPreview'] = array
 	'label'                   => &$GLOBALS['TL_LANG']['tl_content']['imgPreview'],
 	'exclude'                 => true,
 	'inputType'               => 'fileTree',
-	'eval'                    => array('filesOnly'=>true, 'extensions'=>$GLOBALS['TL_CONFIG']['validImageTypes'], 'fieldType'=>'radio', 'mandatory'=>true, 'tl_class' => 'w50'),
+	'eval'                    => array('filesOnly'=>true, 'extensions'=>$GLOBALS['TL_CONFIG']['validImageTypes'], 'nullIfEmpty' => true, 'fieldType'=>'radio', 'mandatory'=>true, 'tl_class' => 'w50'),
 	'sql'                     => "binary(16) NULL"
 );
 
