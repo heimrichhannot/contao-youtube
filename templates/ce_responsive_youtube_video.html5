@@ -1,36 +1,31 @@
 <!-- indexer::stop -->
 <div class="<?php echo $this->class; ?> <?php if ($this->ytFullscreen): ?>lightbox <?php endif; ?>block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
 	<?php if ($this->ytFullscreen): ?>
-		<!-- j_colorbox has to be adjusted:
-			$(".youtube").colorbox({
-				iframe: true,
-				innerWidth: 640,
-				innerHeight: 390
-      		});
-		-->
-		<a class="youtube cBoxElement hidden-xs" href="//www.youtube.com/embed/<?php echo $this->videoId; ?>?rel=<?php echo $this->ytShowRelated ? $this->ytShowRelated : '0'; ?>&modestbranding=<?php echo $this->ytModestBranding ? $this->ytModestBranding : '0'; ?>&showinfo=<?php echo $this->ytShowInfo ? $this->ytShowInfo : '0'; ?>; ?>">
+		<a class="youtube cBoxElement hidden-xs" href="//www.youtube.com/embed/<?php echo $this->youtube; ?>?rel=<?php echo $this->ytShowRelated ? $this->ytShowRelated : '0'; ?>&modestbranding=<?php echo $this->ytModestBranding ? $this->ytModestBranding : '0'; ?>&showinfo=<?php echo $this->ytShowInfo ? $this->ytShowInfo : '0'; ?>; ?>">
 			<?php echo $this->ytLinkText; ?>
 		</a>
-		<a class="youtube visible-xs" href="//www.youtube.com/watch?v=<?php echo $this->videoId; ?>?rel=<?php echo $this->ytShowRelated ? $this->ytShowRelated : '0'; ?>&modestbranding=<?php echo $this->ytModestBranding ? $this->ytModestBranding : '0'; ?>&showinfo=<?php echo $this->ytShowInfo ? $this->ytShowInfo : '0'; ?>; ?>">
+		<a class="youtube visible-xs" href="//www.youtube.com/watch?v=<?php echo $this->youtube; ?>?rel=<?php echo $this->ytShowRelated ? $this->ytShowRelated : '0'; ?>&modestbranding=<?php echo $this->ytModestBranding ? $this->ytModestBranding : '0'; ?>&showinfo=<?php echo $this->ytShowInfo ? $this->ytShowInfo : '0'; ?>; ?>">
 			<?php echo $this->ytLinkText; ?>
 		</a>
 	<?php else: ?>
 		<?php if ($this->addPreviewImage): ?>
 		<div class="video-thumbnail">
-			<?php if ($this->imgHeader): ?>
-				<img class="header" src="<?php echo \HeimrichHannot\XCommonFileDir::getPathFromUuid($this->imgHeader); ?>">
+			<?php if ($this->header): ?>
+				<img class="header" src="<?php echo $this->header->path; ?>">
 			<?php endif; ?>
-			<div class="image">
-				<img src="<?php echo \HeimrichHannot\XCommonFileDir::getPathFromUuid($this->imgPreview); ?>">
-				<?php if ($this->addPlayButton): ?>
-					<div class="play-button"></div>
-				<?php endif; ?>
-			</div>
+			<?php if($this->poster): ?>
+				<div class="image">
+					<img src="<?php echo $this->poster->path; ?>">
+					<?php if ($this->addPlayButton): ?>
+						<div class="play-button"></div>
+					<?php endif; ?>
+				</div>
+			<?php endif; ?>
 		</div>
 		<?php endif; ?>
-		
+
 		<div class="video-container" style="display: none;">
-			<iframe id="<?php echo $this->iFrameId; ?>" type="text/html" src="//www.youtube.com/embed/<?php echo $this->videoId; ?>?rel=<?php echo $this->ytShowRelated ? $this->ytShowRelated : '0'; ?>&modestbranding=<?php echo $this->ytModestBranding ? $this->ytModestBranding : '0'; ?>&showinfo=<?php echo $this->ytShowInfo ? $this->ytShowInfo : '0'; ?>" allowfullscreen frameborder="0">
+			<iframe id="<?php echo $this->iFrameId; ?>" type="text/html" src="//www.youtube.com/embed/<?php echo $this->youtube; ?>?rel=<?php echo $this->ytShowRelated ? $this->ytShowRelated : '0'; ?>&modestbranding=<?php echo $this->ytModestBranding ? $this->ytModestBranding : '0'; ?>&showinfo=<?php echo $this->ytShowInfo ? $this->ytShowInfo : '0'; ?>" allowfullscreen frameborder="0">
 			</iframe>
 		</div>
 	<?php endif; ?>

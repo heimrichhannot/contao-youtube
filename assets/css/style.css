@@ -11,7 +11,7 @@
 }
 
 .video-thumbnail .image .play-button {
-	background: url(/system/modules/responsive_youtube_video/assets/img/play.png) no-repeat 50% 50%;
+	background: url(/system/modules/youtube/assets/img/play.png) no-repeat 50% 50%;
 	position: absolute;
 	top: 0;
 	left: 0;

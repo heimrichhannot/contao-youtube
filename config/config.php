@@ -1,4 +1,4 @@
-<?php if (!defined('TL_ROOT')) die('You cannot access this file directly!');
+<?php
 
 /*
  * Content elements
@@ -9,6 +9,6 @@ $GLOBALS['TL_CTE']['media']['responsive_youtube_video'] = 'HeimrichHannot\Conten
  * Assets
  */
 if (TL_MODE == 'FE') {
-	$GLOBALS['TL_JAVASCRIPT'][] = '/system/modules/responsive_youtube_video/assets/js/scripts.js|static'; // static -> work around for contao 3
-	$GLOBALS['TL_CSS'][] = '/system/modules/responsive_youtube_video/assets/css/style.css';
+	$GLOBALS['TL_JAVASCRIPT'][] = '/system/modules/youtube/assets/js/scripts.js|static'; // static -> work around for contao 3
+	$GLOBALS['TL_CSS'][] = '/system/modules/youtube/assets/css/style.css';
 }

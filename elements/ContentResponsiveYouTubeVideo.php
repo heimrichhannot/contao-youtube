@@ -10,29 +10,47 @@ class ContentResponsiveYouTubeVideo extends \ContentElement
 
 	protected function compile()
 	{
-		if (TL_MODE == 'FE')
-		{
+		if (TL_MODE == 'FE') {
 			$this->Template = new \FrontendTemplate($this->strTemplate);
 			$this->Template->setData($this->arrData);
 			$this->Template->iFrameId = 'ytIFrame' . static::$iFrameIdCounter++;
-			if ($this->addPreviewImage) {
-				if ($this->imgHeader && $this->imgHeader > 0)
-					$this->Template->imgHeader = static::getImagePath($this->imgHeader);
-				if ($this->imgPreview && $this->imgPreview > 0)
-					$this->Template->imgPreview = static::getImagePath($this->imgPreview);
+			if ($this->addPreviewImage)
+			{
+				if (\Validator::isUuid($this->imgHeader))
+				{
+					$objHeader = \FilesModel::findByUuid($this->imgHeader);
+
+					if($objHeader !== null)
+					{
+						$this->Template->header = $objHeader;
+					}
+
+				}
+
+				if (\Validator::isUuid($this->posterSRC))
+				{
+					$objPoster = \FilesModel::findByUuid($this->posterSRC);
+
+					if($objPoster !== null)
+					{
+						$this->Template->poster = $objPoster;
+					}
+
+				}
 			}
 		}
 		else
 		{
-			$this->strTemplate = 'be_wildcard';
-			$this->Template = new \BackendTemplate($this->strTemplate);
-			$this->Template->title = 'YouTube-Video ' . $this->videoId;
+			$this->strTemplate     = 'be_wildcard';
+			$this->Template        = new \BackendTemplate($this->strTemplate);
+			$this->Template->title = 'YouTube-Video ' . $this->youtube;
 		}
 	}
-	
-	public static function getImagePath($id) {
+
+	public static function getImagePath($id)
+	{
 		$objModel = \FilesModel::findByPk($id);
-		
+
 		if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path))
 			return $objModel->path;
 	}

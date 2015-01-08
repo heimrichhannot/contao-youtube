@@ -1,9 +1,9 @@
-<?php if (!defined('TL_ROOT')) die('You cannot access this file directly!');
+<?php
 
 $dc = &$GLOBALS['TL_DCA']['tl_content'];
-$dc['palettes']['responsive_youtube_video'] = '{title_legend},type,name,headline;{previewImage_legend},addPreviewImage;{video_legend},videoId,videoLength,ytHd,ytShowRelated,ytModestBranding,ytShowInfo,ytFullscreen,ytLinkText;{expert_legend:hide},cssID,space;';
+$dc['palettes']['responsive_youtube_video'] = '{title_legend},type,name,headline;{previewImage_legend},addPreviewImage;{video_legend},youtube,videoLength,ytHd,ytShowRelated,ytModestBranding,ytShowInfo,ytFullscreen,ytLinkText;{expert_legend:hide},cssID,space;';
 $dc['palettes']['__selector__'][] = 'addPreviewImage';
-$dc['subpalettes']['addPreviewImage'] = 'imgHeader,imgPreview,addPlayButton';
+$dc['subpalettes']['addPreviewImage'] = 'imgHeader,posterSRC,addPlayButton';
 
 $dc['fields']['addPreviewImage'] = array
 (
@@ -23,15 +23,6 @@ $dc['fields']['imgHeader'] = array
 	'sql'                     => "binary(16) NULL"
 );
 
-$dc['fields']['imgPreview'] = array
-(
-	'label'                   => &$GLOBALS['TL_LANG']['tl_content']['imgPreview'],
-	'exclude'                 => true,
-	'inputType'               => 'fileTree',
-	'eval'                    => array('filesOnly'=>true, 'extensions'=>$GLOBALS['TL_CONFIG']['validImageTypes'], 'nullIfEmpty' => true, 'fieldType'=>'radio', 'mandatory'=>true, 'tl_class' => 'w50'),
-	'sql'                     => "binary(16) NULL"
-);
-
 $dc['fields']['addPlayButton'] = array
 (
 	'label'                   => &$GLOBALS['TL_LANG']['tl_content']['addPlayButton'],
@@ -39,18 +30,6 @@ $dc['fields']['addPlayButton'] = array
 	'inputType'               => 'checkbox',
 	'eval'                    => array('tl_class' => 'w50'),
 	'sql'                     => "char(1) NOT NULL default ''"
-);
-
-$dc['fields']['videoId'] = array
-(
-	'label'                   => &$GLOBALS['TL_LANG']['tl_content']['videoId'],
-	'exclude'                 => true,
-	'search'                  => true,
-	'sorting'                 => true,
-	'flag'                    => 1,
-	'inputType'               => 'text',
-	'eval'                    => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
-	'sql'                     => "varchar(255) NOT NULL default ''"
 );
 
 $dc['fields']['videoLength'] = array

@@ -3,9 +3,9 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2013 Leo Feyer
+ * Copyright (c) 2005-2015 Leo Feyer
  *
- * @package Responsive_youtube_video
+ * @package Youtube
  * @link    https://contao.org
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
@@ -26,7 +26,10 @@ ClassLoader::addNamespaces(array
 ClassLoader::addClasses(array
 (
 	// Elements
-	'HeimrichHannot\ContentResponsiveYouTubeVideo' => 'system/modules/responsive_youtube_video/elements/ContentResponsiveYouTubeVideo.php',
+	'HeimrichHannot\ContentResponsiveYouTubeVideo' => 'system/modules/youtube/elements/ContentResponsiveYouTubeVideo.php',
+
+	// Classes
+	'HeimrichHannot\ResponsiveYouTubeVideo'        => 'system/modules/youtube/classes/ResponsiveYouTubeVideo.php',
 ));
 
 
@@ -35,5 +38,6 @@ ClassLoader::addClasses(array
  */
 TemplateLoader::addFiles(array
 (
-	'ce_responsive_youtube_video' => 'system/modules/responsive_youtube_video/templates',
+	'ce_responsive_youtube_video' => 'system/modules/youtube/templates',
+	'news_latest'                 => 'system/modules/youtube/templates',
 ));
