@@ -1,5 +1,8 @@
 <!-- indexer::stop -->
 <div class="<?php echo $this->class; ?> <?php if ($this->ytFullscreen): ?>lightbox <?php endif; ?>block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+	<?php if ($this->headline): ?>
+	    <<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
+	  <?php endif; ?>
 	<?php if ($this->ytFullscreen): ?>
 		<a class="youtube cBoxElement hidden-xs" href="//www.youtube.com/embed/<?php echo $this->youtube; ?>?rel=<?php echo $this->ytShowRelated ? $this->ytShowRelated : '0'; ?>&modestbranding=<?php echo $this->ytModestBranding ? $this->ytModestBranding : '0'; ?>&showinfo=<?php echo $this->ytShowInfo ? $this->ytShowInfo : '0'; ?>; ?>">
 			<?php echo $this->ytLinkText; ?>
@@ -24,7 +27,7 @@
 		</div>
 		<?php endif; ?>
 
-		<div class="video-container" style="display: none;">
+		<div class="video-container" <?php if ($this->addPreviewImage): ?>style="display: none;"<?php endif; ?>>
 			<iframe id="<?php echo $this->iFrameId; ?>" type="text/html" src="//www.youtube.com/embed/<?php echo $this->youtube; ?>?rel=<?php echo $this->ytShowRelated ? $this->ytShowRelated : '0'; ?>&modestbranding=<?php echo $this->ytModestBranding ? $this->ytModestBranding : '0'; ?>&showinfo=<?php echo $this->ytShowInfo ? $this->ytShowInfo : '0'; ?>" allowfullscreen frameborder="0">
 			</iframe>
 		</div>
