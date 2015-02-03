@@ -14,7 +14,7 @@
 		<?php if ($this->addPreviewImage): ?>
 		<div class="video-thumbnail">
 			<?php if ($this->header): ?>
-				<img class="header" src="<?php echo $this->header->path; ?>">
+				<img class="header" src="<?php echo $this->header->path; ?>" alt="youtube-preview">
 			<?php endif; ?>
 			<?php if($this->poster): ?>
 				<div class="image">
@@ -28,7 +28,7 @@
 		<?php endif; ?>
 
 		<div class="video-container" <?php if ($this->addPreviewImage): ?>style="display: none;"<?php endif; ?>>
-			<iframe id="<?php echo $this->iFrameId; ?>" type="text/html" src="//www.youtube.com/embed/<?php echo $this->youtube; ?>?rel=<?php echo $this->ytShowRelated ? $this->ytShowRelated : '0'; ?>&modestbranding=<?php echo $this->ytModestBranding ? $this->ytModestBranding : '0'; ?>&showinfo=<?php echo $this->ytShowInfo ? $this->ytShowInfo : '0'; ?>" allowfullscreen frameborder="0">
+			<iframe id="<?php echo $this->iFrameId; ?>" type="text/html" src="//www.youtube.com/embed/<?php echo $this->youtube; ?>?rel=<?php echo $this->ytShowRelated ? $this->ytShowRelated : '0'; ?>&amp;modestbranding=<?php echo $this->ytModestBranding ? $this->ytModestBranding : '0'; ?>&amp;showinfo=<?php echo $this->ytShowInfo ? $this->ytShowInfo : '0'; ?>" allowfullscreen frameborder="0">
 			</iframe>
 		</div>
 	<?php endif; ?>
