@@ -15,12 +15,13 @@
 					// This function runs onYouTubePlayerReady
 //					responsiveYouTubeVideo.callPlayer($iframe.attr('id'), "playVideo");
 //				});
-				$iframe.delay(1000).queue(function(next) {
+
+				$iframe.queue(function(next) {
 					$this.hide();
-					$video.css('height', 'auto');
+					$video.css('height', '0');
 					$video.css('padding-bottom', '56.25%');
 					$video.css('padding-top', '0');
-					$(this).css('height', '100%'); 
+					$(this).css({'opacity' : '0', 'height' : '100%'}).animate({'opacity': 1}, 1500); // use transition to hide youtube start image
 					next();
 				});
 			})
