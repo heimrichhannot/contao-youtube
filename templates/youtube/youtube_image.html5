@@ -1,0 +1,20 @@
+
+<!-- indexer::stop -->
+<div class="youtube_image">
+	<?php if ($this->addImage): ?>
+		<div class="video-thumbnail">
+			<figure class="image_container">
+				<?php $this->insert('picture_default', $this->picture); ?>
+				<?php if ($this->addPlayButton): ?>
+					<span class="play-button"></span>
+				<?php endif; ?>
+			</figure>
+		</div>
+	<?php else: ?>
+		<div class="video-container">
+			<iframe id="<?php echo $this->iFrameId; ?>" type="text/html" src="//www.youtube.com/embed/<?php echo $this->youtube; ?>?rel=<?php echo $this->ytShowRelated ? $this->ytShowRelated : '0'; ?>&amp;modestbranding=<?php echo $this->ytModestBranding ? $this->ytModestBranding : '0'; ?>&amp;showinfo=<?php echo $this->ytShowInfo ? $this->ytShowInfo : '0'; ?>" allowfullscreen frameborder="0">
+			</iframe>
+		</div>
+	<?php endif; ?>
+</div>
+<!-- indexer::continue -->

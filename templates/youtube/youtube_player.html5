@@ -1,0 +1,9 @@
+
+<!-- indexer::stop -->
+<div class="youtube_player">
+	<div class="video-container">
+		<iframe id="<?php echo $this->iFrameId; ?>" type="text/html" src="//www.youtube.com/embed/<?php echo $this->youtube; ?>?rel=<?php echo $this->ytShowRelated ? $this->ytShowRelated : '0'; ?>&amp;modestbranding=<?php echo $this->ytModestBranding ? $this->ytModestBranding : '0'; ?>&amp;showinfo=<?php echo $this->ytShowInfo ? $this->ytShowInfo : '0'; ?><?php if($this->autoplay):?>&amp;autoplay=1<?php endif; ?>" allowfullscreen frameborder="0">
+		</iframe>
+	</div>
+</div>
+<!-- indexer::continue -->

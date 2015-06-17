@@ -4,16 +4,17 @@
  * Legends
  */
 
-$GLOBALS['TL_LANG']['tl_content']['responsiveYouTubeVideo_legend'] = 'YouTube-Video-Einstellungen';
+$GLOBALS['TL_LANG']['tl_content']['previewImage_legend'] = 'Vorschaubild-Einstellungen';
+$GLOBALS['TL_LANG']['tl_content']['video_legend'] = 'Video-Einstellungen';
+
+
 
 /**
  * Fields
  */
 
-$GLOBALS['TL_LANG']['tl_content']['addResponsiveYouTubeVideo'] = array('YouTube-Video (Responsive) hinzufügen', 'Wählen Sie diese Option, wenn Sie der Nachricht ein YouTube-Video hinzufügen möchten.');
-$GLOBALS['TL_LANG']['tl_content']['addPreviewImage'] = array('Vorschaugrafik hinzufügen', 'Wählen Sie diese Option, wenn Sie dem Video eine Vorschaugrafik hinzufügen möchten.');
-$GLOBALS['TL_LANG']['tl_content']['imgHeader'] = array('Headergrafik', 'Wählen Sie eine Grafik aus, die über dem Vorschaubild erscheinen soll (bspw. eine Layoutgrafik, die bei jedem Video gleich ist). Die Headergrafik ist ebenfalls klickbar und startet das Video.');
-$GLOBALS['TL_LANG']['tl_content']['imgPreview'] = array('Vorschaugrafik', 'Wählen Sie eine Grafik aus, die als Vorschaugrafik über dem Video platziert wird. Ein Klick darauf startet das Video.');
+$GLOBALS['TL_LANG']['tl_content']['addYouTube'] = array('YouTube-Video hinzufügen', 'Wählen Sie diese Option, wenn Sie der Nachricht ein YouTube-Video hinzufügen möchten.');
+$GLOBALS['TL_LANG']['tl_content']['addPreviewImage'] = array('Vorschaugrafik hinzufügen', 'Wählen Sie diese Option, wenn Sie dem Video eine Vorschaugrafik hinzufügen möchten, wenn das Vorschaubild nicht gesetzt ist, wird das Bild von Youtube geladen.');
 $GLOBALS['TL_LANG']['tl_content']['addPlayButton'] = array('Play-Button hinzufügen', 'Wählen Sie diese Option, damit dem Video ein div-Element für eine Play-Grafik hinzugefügt wird.');
 
 $GLOBALS['TL_LANG']['tl_content']['videoId'] = array('Video-Id', 'Geben Sie hier die ID des YouTube-Videos ein.');
@@ -22,5 +23,3 @@ $GLOBALS['TL_LANG']['tl_content']['ytHd'] = array('Videoqualität erzwingen', 'W
 $GLOBALS['TL_LANG']['tl_content']['ytShowRelated'] = array('Ähnliche Videos anzeigen', 'Wählen Sie diese Option, wenn nach dem Abspielen des Videos ähnliche Videos angezeigt werden sollen.');
 $GLOBALS['TL_LANG']['tl_content']['ytModestBranding'] = array('YouTube-Branding ausblenden', 'Wählen Sie diese Option, wenn YouTube-Branding-Infos ausgeblendet werden sollen.');
 $GLOBALS['TL_LANG']['tl_content']['ytShowInfo'] = array('Video-Infos anzeigen', 'Wählen Sie diese Option, wenn Infos zum Video ausgeblendet werden sollen.');
-$GLOBALS['TL_LANG']['tl_content']['ytFullscreen'] = array('Großansicht/Neues Fenster', 'Großansicht des Videos in einer Lightbox bzw. den Link in einem neuem Browserfenster öffnen.');
-$GLOBALS['TL_LANG']['tl_content']['ytLinkText'] = array('Link-Text', 'Der angezeigte Text des Links, der die Lightbox öffnet.');
