@@ -5,9 +5,7 @@
 		<div class="video-thumbnail">
 			<figure class="image_container">
 				<?php $this->insert('picture_default', $this->picture); ?>
-				<?php if ($this->addPlayButton): ?>
-					<span class="play-button"></span>
-				<?php endif; ?>
+				<span class="play-button"></span>
 			</figure>
 		</div>
 	<?php else: ?>
