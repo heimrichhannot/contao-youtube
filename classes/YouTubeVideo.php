@@ -67,7 +67,7 @@ class YouTubeVideo extends \Frontend
 				$arrImage['alt']       = 'youtube-image-' . $objItem->youtube;
 
 				if ($objConfig->imgSize != '' || $objConfig->size) {
-					$size = deserialize($objConfig->imgSize || $objConfig->size);
+					$size = deserialize($objConfig->imgSize ? $objConfig->imgSize : $objConfig->size);
 
 					if ($size[0] > 0 || $size[1] > 0 || is_numeric($size[2]))
 					{

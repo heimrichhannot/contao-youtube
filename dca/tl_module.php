@@ -25,7 +25,7 @@ $arrFields = array
 (
 	'youtube_template' => array
 	(
-		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['news_template'],
+		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['youtube_template'],
 		'default'                 => 'youtube_default',
 		'exclude'                 => true,
 		'inputType'               => 'select',

@@ -15,7 +15,7 @@ class YouTubeBackend extends \Backend
 {
 
 	/**
-	 * Return all news templates as array
+	 * Return all youtube templates as array
 	 * @return array
 	 */
 	public function getYouTubeTemplates()
