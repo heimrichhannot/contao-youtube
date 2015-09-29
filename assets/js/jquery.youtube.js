@@ -2,10 +2,11 @@
 
     YouTubeVideo = {
 		onReady : function() {
-			$('.youtube_video .video-thumbnail').on('click', function() {
+			$('[data-media=youtube]').on('click', function() {
 				var $this = $(this),
 					$video = $this.parent().find('.video-container'),
 					$iframe = $video.find('iframe');
+
 				$video.css('height', 0);
 				$video.css('padding', 0);
 				$iframe.css('height', 0);
