@@ -17,8 +17,8 @@ class YouTubeHooks extends \Controller
 	public function parseNewsArticlesHook($objTemplate, $arrNews, $objModule)
 	{
 		if(!$arrNews['addYouTube']) return;
-		
-		YouTubeVideo::addVideoToTemplate($objTemplate, $arrNews, $objModule);
+
+		YouTubeVideo::addVideoToTemplate($objTemplate, $objTemplate->getData(), $objModule);
 	}
 
 }
