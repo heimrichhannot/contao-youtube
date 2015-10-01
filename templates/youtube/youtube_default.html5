@@ -2,7 +2,7 @@
 <!-- indexer::stop -->
 <div class="youtube_default">
 	<?php if ($this->addImage): ?>
-		<div class="video-thumbnail" data-media="youtube">
+		<div class="video-thumbnail" data-media="youtube" title="<?= $this->playTitle; ?>">
 			<figure class="image_container">
 				<?php $this->insert('picture_default', $this->picture); ?>
 				<?php if ($this->addPlayButton): ?>

@@ -79,6 +79,8 @@ class YouTubeVideo extends \Frontend
 			}
 
 		}
+
+		$objTemplate->playTitle = $GLOBALS['TL_LANG']['MSC']['youtube']['play'];
 		
 		return $objTemplate->parse();
 	}
