@@ -153,6 +153,7 @@ class YouTubeVideo
 	{
 		$objTemplate = new \FrontendTemplate($this->getConfigData('youtubeprivacy_template') != '' ? $this->getConfigData('youtubeprivacy_template') : static::$strPrivacyTemplate);
 		$objTemplate->setData($GLOBALS['TL_LANG']['MSC']['youtube']['privacy']);
+		$objTemplate->autoLabel = sprintf($objTemplate->autoLabel, \Environment::get('host'));
 		
 		return $objTemplate->parse();
 	}
