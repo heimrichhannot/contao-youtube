@@ -24,7 +24,10 @@ class ContentYouTube extends \ContentElement
 		{
 			$this->Template = new \FrontendTemplate($this->strTemplate);
 			$this->Template->setData($this->arrData);
-			YouTubeVideo::addVideoToTemplate($this->Template, $this->arrData, $this);
+
+			$objConfig = YouTubeSettings::getInstance()->setModule($this->objModel);
+			
+			YouTubeVideo::getInstance()->setData($this->arrData)->setConfig($objConfig)->addToTemplate($this->Template);
 		}
 		else
 		{

@@ -2,7 +2,7 @@
 <!-- indexer::stop -->
 <div class="youtube_image">
 	<?php if ($this->addImage): ?>
-		<div class="video-thumbnail">
+		<div class="video-thumbnail" data-media="youtube" title="<?= $this->playTitle; ?>"<?php if($this->youtubePrivacy): ?> data-privacy="true"<?php endif;?><?php if($this->autoplay): ?> data-autoplay="true"<?php endif;?>>
 			<figure class="image_container">
 				<?php $this->insert('picture_default', $this->picture); ?>
 				<span class="play-button"></span>
@@ -10,9 +10,15 @@
 		</div>
 	<?php else: ?>
 		<div class="video-container">
-			<iframe src="//www.youtube.com/embed/<?php echo $this->youtube; ?>?rel=<?php echo $this->ytShowRelated ? $this->ytShowRelated : '0'; ?>&amp;modestbranding=<?php echo $this->ytModestBranding ? $this->ytModestBranding : '0'; ?>&amp;showinfo=<?php echo $this->ytShowInfo ? $this->ytShowInfo : '0'; ?>" allowfullscreen frameborder="0">
-			</iframe>
+			<?php if($this->youtubePrivacy): ?>
+				<iframe src="about:blank" data-src="<?= $this->youtubeSrc; ?>" allowfullscreen frameborder="0"></iframe>
+			<?php else: ?>
+				<iframe src="<?= $this->src; ?>" allowfullscreen frameborder="0"></iframe>
+			<?php endif; ?>
 		</div>
+		<?php if($this->youtubePrivacy): ?>
+			<?= $this->privacy; ?>
+		<?php endif; ?>
 	<?php endif; ?>
 </div>
 <!-- indexer::continue -->

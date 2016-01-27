@@ -18,7 +18,9 @@ class YouTubeHooks extends \Controller
 	{
 		if(!$arrNews['addYouTube']) return;
 
-		YouTubeVideo::addVideoToTemplate($objTemplate, $objTemplate->getData(), $objModule);
+		$objConfig = YouTubeSettings::getInstance()->setModule($objModule->getModel());
+		
+		YouTubeVideo::getInstance()->setData($arrNews)->setConfig($objConfig)->addToTemplate($objTemplate);
 	}
 
 }

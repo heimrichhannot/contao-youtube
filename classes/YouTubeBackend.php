@@ -22,4 +22,14 @@ class YouTubeBackend extends \Backend
 	{
 		return $this->getTemplateGroup('youtube_');
 	}
+
+	/**
+	 * Return all youtube privacy templates as array
+	 *
+	 * @return array
+	 */
+	public function getPrivacyTemplates()
+	{
+		return $this->getTemplateGroup('youtubeprivacy_');
+	}
 }

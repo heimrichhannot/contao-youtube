@@ -1,21 +1,76 @@
 (function($){
 
     YouTubeVideo = {
+		config : {
+			cookies : {
+				privacy : {
+					name : 'youtube-privacy',
+					value : 'auto',
+					expire : 365
+				}
+			},
+			privacyAutoFieldName : 'youtubePrivacyAuto'
+		},
 		onReady : function() {
-			$('[data-media=youtube]').on('click', function() {
-				var $this = $(this),
-					$video = $this.parent().find('.video-container'),
-					$iframe = $video.find('iframe');
 
+			// autoplay videos
+			$('[data-media=youtube]').each(function(){
+				if($(this).data('autoplay')) {
+					YouTubeVideo.initVideo(this);
+				}
+			});
+
+			// handle click event
+			$('[data-media=youtube]').on('click', function() {
+				YouTubeVideo.initVideo(this);
+			})
+		},
+		initVideo : function(el){
+			var $this = $(el),
+				$video = $this.parent().find('.video-container'),
+				$iframe = $video.find('iframe');
+
+			if($this.data('privacy'))
+			{
+				// auto load privacy videos if set within cookie
+				if(YouTubeVideo.getPrivacyAuto() == YouTubeVideo.config.cookies.privacy.value)
+				{
+					$iframe.attr('src', $iframe.data('src'));
+					showVideo();
+					return false;
+				}
+
+				var $modal = $this.parent().find('.modal.youtube-privacy');
+
+				$modal.modal('show');
+
+				$modal.find('form').on('submit', function(e){
+					e.preventDefault();
+
+					if($(this).find('[name=' + YouTubeVideo.config.privacyAutoFieldName +  ']').is(':checked'))
+					{
+						YouTubeVideo.setPrivacyAuto();
+					}
+
+					$iframe.attr('src', $iframe.data('src'));
+
+					showVideo();
+
+					$modal.modal('hide');
+				});
+
+				return false;
+			}
+
+			showVideo();
+
+			function showVideo()
+			{
 				$video.css('height', 0);
 				$video.css('padding', 0);
 				$iframe.css('height', 0);
 				$video.show();
 				$iframe.attr('src', $iframe.attr('src') + '&autoplay=1');
-//				responsiveYouTubeVideo.callPlayer($iframe.attr('id'), function() {
-					// This function runs onYouTubePlayerReady
-//					responsiveYouTubeVideo.callPlayer($iframe.attr('id'), "playVideo");
-//				});
 
 				$iframe.queue(function(next) {
 					$this.hide();
@@ -25,99 +80,41 @@
 					$(this).css({'opacity' : '0', 'height' : '100%'}).animate({'opacity': 1}, 1500); // use transition to hide youtube start image
 					next();
 				});
-			})
+			}
 		},
-		/**
-		 * @author       Rob W <gwnRob@gmail.com>
-		 * @website      http://stackoverflow.com/a/7513356/938089
-		 * @version      20131010
-		 * @description  Executes function on a framed YouTube video (see website link)
-		 *               For a full list of possible functions, see:
-		 *               https://developers.google.com/youtube/js_api_reference
-		 * @param String frame_id The id of (the div containing) the frame
-		 * @param String func     Desired function to call, eg. "playVideo"
-		 *        (Function)      Function to call when the player is ready.
-		 * @param Array  args     (optional) List of arguments to pass to function func*/
-		callPlayer: function(frame_id, func, args) {
-		    if (window.jQuery && frame_id instanceof jQuery) frame_id = frame_id.get(0).id;
-		    var iframe = document.getElementById(frame_id);
-		    if (iframe && iframe.tagName.toUpperCase() != 'IFRAME') {
-		        iframe = iframe.getElementsByTagName('iframe')[0];
-		    }
+		setPrivacyAuto : function() {
+			this.createCookie(YouTubeVideo.config.cookies.privacy.name, YouTubeVideo.config.cookies.privacy.value, YouTubeVideo.config.cookies.privacy.expire);
+		},
+		getPrivacyAuto : function(){
+			return this.readCookie(YouTubeVideo.config.cookies.privacy.name);
+		},
+		createCookie : function(name, value, days) {
+			var expires;
 
-		    // When the player is not ready yet, add the event to a queue
-		    // Each frame_id is associated with an own queue.
-		    // Each queue has three possible states:
-		    //  undefined = uninitialised / array = queue / 0 = ready
-		    if (!responsiveYouTubeVideo.callPlayer.queue) responsiveYouTubeVideo.callPlayer.queue = {};
-		    var queue = responsiveYouTubeVideo.callPlayer.queue[frame_id],
-		        domReady = document.readyState == 'complete';
-
-		    if (domReady && !iframe) {
-		        // DOM is ready and iframe does not exist. Log a message
-		        window.console && console.log('callPlayer: Frame not found; id=' + frame_id);
-		        if (queue) clearInterval(queue.poller);
-		    } else if (func === 'listening') {
-		        // Sending the "listener" message to the frame, to request status updates
-		        if (iframe && iframe.contentWindow) {
-		            func = '{"event":"listening","id":' + JSON.stringify(''+frame_id) + '}';
-		            iframe.contentWindow.postMessage(func, '*');
-		        }
-		    } else if (!domReady ||
-		               iframe && (!iframe.contentWindow || queue && !queue.ready) ||
-		               (!queue || !queue.ready) && typeof func === 'function') {
-		        if (!queue) queue = responsiveYouTubeVideo.callPlayer.queue[frame_id] = [];
-		        queue.push([func, args]);
-		        if (!('poller' in queue)) {
-		            // keep polling until the document and frame is ready
-		            queue.poller = setInterval(function() {
-		            	responsiveYouTubeVideo.callPlayer(frame_id, 'listening');
-		            }, 250);
-		            // Add a global "message" event listener, to catch status updates:
-		            messageEvent(1, function runOnceReady(e) {
-		                if (!iframe) {
-		                    iframe = document.getElementById(frame_id);
-		                    if (!iframe) return;
-		                    if (iframe.tagName.toUpperCase() != 'IFRAME') {
-		                        iframe = iframe.getElementsByTagName('iframe')[0];
-		                        if (!iframe) return;
-		                    }
-		                }
-		                if (e.source === iframe.contentWindow) {
-		                    // Assume that the player is ready if we receive a
-		                    // message from the iframe
-		                    clearInterval(queue.poller);
-		                    queue.ready = true;
-		                    messageEvent(0, runOnceReady);
-		                    // .. and release the queue:
-		                    while (tmp = queue.shift()) {
-		                    	responsiveYouTubeVideo.callPlayer(frame_id, tmp[0], tmp[1]);
-		                    }
-		                }
-		            }, false);
-		        }
-		    } else if (iframe && iframe.contentWindow) {
-		        // When a function is supplied, just call it (like "onYouTubePlayerReady")
-		        if (func.call) return func();
-		        // Frame exists, send message
-		        iframe.contentWindow.postMessage(JSON.stringify({
-		            "event": "command",
-		            "func": func,
-		            "args": args || [],
-		            "id": frame_id
-		        }), "*");
-		    }
-		    /* IE8 does not support addEventListener... */
-		    function messageEvent(add, listener) {
-		        var w3 = add ? window.addEventListener : window.removeEventListener;
-		        w3 ?
-		            w3('message', listener, !1)
-		        :
-		            (add ? window.attachEvent : window.detachEvent)('onmessage', listener);
-		    }
+			if (days) {
+				var date = new Date();
+				date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+				expires = "; expires=" + date.toGMTString();
+			} else {
+				expires = "";
+			}
+			document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + expires + "; path=/";
+		},
+		readCookie : function(name) {
+			var nameEQ = encodeURIComponent(name) + "=";
+			var ca = document.cookie.split(';');
+			for (var i = 0; i < ca.length; i++) {
+				var c = ca[i];
+				while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+				if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
+			}
+			return null;
+		},
+		eraseCookie : function (name) {
+			this.createCookie(name, "", -1);
 		}
 	};
-	
+
 	$(document).ready(function() {
 		YouTubeVideo.onReady();
 	});

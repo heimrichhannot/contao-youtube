@@ -22,4 +22,6 @@ $GLOBALS['TL_LANG']['tl_content']['videoLength'] = array('Länge', 'Geben Sie hi
 $GLOBALS['TL_LANG']['tl_content']['ytHd'] = array('Videoqualität erzwingen', 'Wählen Sie hier aus, in welcher Qualität das Video abgespielt werden soll.');
 $GLOBALS['TL_LANG']['tl_content']['ytShowRelated'] = array('Ähnliche Videos anzeigen', 'Wählen Sie diese Option, wenn nach dem Abspielen des Videos ähnliche Videos angezeigt werden sollen.');
 $GLOBALS['TL_LANG']['tl_content']['ytModestBranding'] = array('YouTube-Branding ausblenden', 'Wählen Sie diese Option, wenn YouTube-Branding-Infos ausgeblendet werden sollen.');
-$GLOBALS['TL_LANG']['tl_content']['ytShowInfo'] = array('Video-Infos anzeigen', 'Wählen Sie diese Option, wenn Infos zum Video ausgeblendet werden sollen.');
+$GLOBALS['TL_LANG']['tl_content']['ytShowInfo'] = array('Video-Infos anzeigen', 'Wählen Sie diese Option, wenn Infos zum Video angezeit werden sollen.');
+
+

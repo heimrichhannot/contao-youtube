@@ -3,7 +3,7 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2015 Leo Feyer
+ * Copyright (c) 2005-2016 Leo Feyer
  *
  * @license LGPL-3.0+
  */
@@ -24,13 +24,14 @@ ClassLoader::addNamespaces(array
 ClassLoader::addClasses(array
 (
 	// Elements
-	'HeimrichHannot\YouTube\ContentYouTube' => 'system/modules/youtube/elements/ContentYouTube.php',
+	'HeimrichHannot\YouTube\ContentYouTube'  => 'system/modules/youtube/elements/ContentYouTube.php',
 
 	// Classes
-	'HeimrichHannot\YouTube\YouTubeBackend' => 'system/modules/youtube/classes/YouTubeBackend.php',
-	'HeimrichHannot\YouTube\YouTubeHooks'   => 'system/modules/youtube/classes/YouTubeHooks.php',
-	'HeimrichHannot\YouTube\YouTubeVideo'   => 'system/modules/youtube/classes/YouTubeVideo.php',
-	'HeimrichHannot\YouTube\UpgradeHandler' => 'system/modules/youtube/classes/UpgradeHandler.php',
+	'HeimrichHannot\YouTube\YouTubeSettings' => 'system/modules/youtube/classes/YouTubeSettings.php',
+	'HeimrichHannot\YouTube\YouTubeBackend'  => 'system/modules/youtube/classes/YouTubeBackend.php',
+	'HeimrichHannot\YouTube\YouTubeHooks'    => 'system/modules/youtube/classes/YouTubeHooks.php',
+	'HeimrichHannot\YouTube\YouTubeVideo'    => 'system/modules/youtube/classes/YouTubeVideo.php',
+	'HeimrichHannot\YouTube\UpgradeHandler'  => 'system/modules/youtube/classes/UpgradeHandler.php',
 ));
 
 
@@ -39,9 +40,9 @@ ClassLoader::addClasses(array
  */
 TemplateLoader::addFiles(array
 (
-	'youtube_default' => 'system/modules/youtube/templates/youtube',
-	'youtube_image'   => 'system/modules/youtube/templates/youtube',
-	'youtube_player'  => 'system/modules/youtube/templates/youtube',
-	'news_latest'     => 'system/modules/youtube/templates/news',
-	'ce_youtube'      => 'system/modules/youtube/templates/elements',
+	'youtube_default'        => 'system/modules/youtube/templates/youtube',
+	'youtube_image'          => 'system/modules/youtube/templates/youtube',
+	'youtube_player'         => 'system/modules/youtube/templates/youtube',
+	'youtubeprivacy_default' => 'system/modules/youtube/templates/privacy',
+	'ce_youtube'             => 'system/modules/youtube/templates/elements',
 ));
