@@ -78,7 +78,7 @@ class YouTubeVideo
 		$this->addConfigToTemplate($objTemplate);
 
 		// add preview image when in privacy mode, cause we need something to show
-		if ($this->addPreviewImage || $this->youtubePrivacy) {
+		if ($this->addPreviewImage || $this->getConfigData('youtubePrivacy')) {
 			$this->addPreviewImageToTemplate($objTemplate);
 		}
 
