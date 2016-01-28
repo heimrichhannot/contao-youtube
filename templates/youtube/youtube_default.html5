@@ -16,7 +16,7 @@
 		<?php if($this->youtubePrivacy): ?>
 			<iframe src="about:blank" data-src="<?= $this->youtubeSrc; ?>" allowfullscreen frameborder="0"></iframe>
 		<?php else: ?>
-			<iframe src="<?= $this->src; ?>" allowfullscreen frameborder="0"></iframe>
+			<iframe src="<?= $this->youtubeSrc; ?>" allowfullscreen frameborder="0"></iframe>
 		<?php endif; ?>
 	</div>
 	<?php if($this->youtubePrivacy): ?>
