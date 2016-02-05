@@ -139,7 +139,7 @@ class YouTubeVideo
 
 			if ($this->getConfigData('imgSize') != '' || $this->getConfigData('size')) {
 				$size = deserialize($this->getConfigData('imgSize') ? $this->getConfigData('imgSize') : $this->getConfigData('size'));
-
+				
 				if ($size[0] > 0 || $size[1] > 0 || is_numeric($size[2])) {
 					$arrImage['size'] = $size;
 				}

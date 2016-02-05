@@ -21,7 +21,11 @@ class YouTubeSettings
 	 */
 	protected static $objInstance;
 
-	protected static $arrayKeyPrefixes = array('youtube');
+	/**
+	 * Config prefixes that can be extracted globally
+	 * @var array
+	 */
+	protected static $arrayKeyPrefixes = array('youtube', 'size', 'imgSize');
 
 	protected $arrData = array();
 
