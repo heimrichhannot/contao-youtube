@@ -20,7 +20,7 @@ class YouTubeHooks extends \Controller
 
 		$objConfig = YouTubeSettings::getInstance()->setModule($objModule->getModel());
 		
-		YouTubeVideo::getInstance()->setData($arrNews)->setConfig($objConfig)->addToTemplate($objTemplate);
+		YouTubeVideo::getInstance()->setData($objTemplate->getData())->setConfig($objConfig)->addToTemplate($objTemplate);
 	}
 
 }
