@@ -22,7 +22,7 @@ Youtube videos can be added to news templates with ease. Just add the following 
     * In privacy mode the video is displayed, after the user accepted a privacy advice within a modal prompt (requires bootstrap 3 modal window support)
     * The user can mark his selection as permanent with a checkbox (state will be saved in a cookie) 
 
-![alt privacy modal](./doc/img/privacy_modal.jpg)
+![alt privacy modal](./docs/img/privacy_modal.jpg)
     
     
 ### Content elements

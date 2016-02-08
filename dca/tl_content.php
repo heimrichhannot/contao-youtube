@@ -22,7 +22,7 @@ $dc['palettes']['__selector__'][] = 'addPreviewImage';
  */
 $dc['palettes']['youtube'] =
 	'{title_legend},type,name,headline;
-	{video_legend},youtube,autoplay,videoLength,ytHd,ytShowRelated,ytModestBranding,ytShowInfo;
+	{video_legend},youtube,autoplay,videoDuration,ytHd,ytShowRelated,ytModestBranding,ytShowInfo,youtubeFullsize,youtubeLinkText;
 	{previewImage_legend},addPreviewImage;
 	{expert_legend:hide},cssID,space;';
 
@@ -54,9 +54,9 @@ $arrFields = array(
 		'sql'       => "char(1) NOT NULL default ''",
 	),
 
-	'videoLength' => array
+	'videoDuration' => array
 	(
-		'label'     => &$GLOBALS['TL_LANG']['tl_content']['videoLength'],
+		'label'     => &$GLOBALS['TL_LANG']['tl_content']['videoDuration'],
 		'exclude'   => true,
 		'search'    => true,
 		'sorting'   => true,
@@ -102,6 +102,22 @@ $arrFields = array(
 		'eval'      => array('tl_class' => 'w50'),
 		'sql'       => "char(1) NOT NULL default ''",
 	),
+
+	'youtubeFullsize' => array(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_content']['youtubeFullsize'],
+		'exclude'                 => true,
+		'inputType'               => 'checkbox',
+		'eval'                    => array('tl_class'=>'w50'),
+		'sql'                     => "char(1) NOT NULL default ''"
+	),
+
+	'youtubeLinkText' => array(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_content']['youtubeLinkText'],
+		'exclude'                 => true,
+		'inputType'               => 'text',
+		'eval'                    => array('maxlength' => 255, 'tl_class' => 'w50'),
+		'sql'                     => "varchar(255) NOT NULL default ''"
+	)
 );
 
 $dc['fields'] = array_merge($dc['fields'], $arrFields);

@@ -19,7 +19,7 @@ $dc = &$GLOBALS['TL_DCA']['tl_news'];
  */
 $dc['palettes']['default']        = str_replace('{image_legend}', '{youtube_legend},addYouTube;{image_legend}', $dc['palettes']['default']);
 $dc['subpalettes']['addYouTube']  =
-	'youtube,autoplay,videoLength,ytHd,ytShowRelated,ytModestBranding,ytShowInfo,addPreviewImage,posterSRC,addPlayButton';
+	'youtube,autoplay,videoDuration,ytHd,ytShowRelated,ytModestBranding,ytShowInfo,youtubeFullsize,youtubeLinkText,addPreviewImage,posterSRC,addPlayButton';
 $dc['palettes']['__selector__'][] = 'addYouTube';
 
 /**
@@ -44,7 +44,10 @@ $arrFields = array
 	'youtube'          => &$GLOBALS['TL_DCA']['tl_content']['fields']['youtube'],
 	'autoplay'         => &$GLOBALS['TL_DCA']['tl_content']['fields']['autoplay'],
 	'addPreviewImage'  => &$GLOBALS['TL_DCA']['tl_content']['fields']['addPreviewImage'],
-	'posterSRC'        => &$GLOBALS['TL_DCA']['tl_content']['fields']['posterSRC']
+	'posterSRC'        => &$GLOBALS['TL_DCA']['tl_content']['fields']['posterSRC'],
+	'youtubeFullsize'  => &$GLOBALS['TL_DCA']['tl_content']['fields']['youtubeFullsize'],
+	'youtubeLinkText'  => &$GLOBALS['TL_DCA']['tl_content']['fields']['youtubeLinkText'],
+	'videoDuration'    => &$GLOBALS['TL_DCA']['tl_content']['fields']['videoDuration'],
 );
 
 $dc['fields'] = array_merge($dc['fields'], $arrFields);

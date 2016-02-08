@@ -15,6 +15,8 @@ class YouTubeVideo
 {
 	protected static $strTemplate = 'youtube_default';
 
+	protected static $strFullsizeTemplate = 'youtube_modal';
+
 	protected static $strPrivacyTemplate = 'youtubeprivacy_default';
 
 	protected static $defaultEmbedSrc = '//www.youtube.com/embed/';
@@ -62,11 +64,14 @@ class YouTubeVideo
 		$objTemplate->youtubeVideo = $this->generate();
 	}
 
-	public function generate()
+	public function generate($blnIgnoreFullsize = false)
 	{
 		if (!$this->init()) {
 			return '';
 		}
+
+		if ($blnIgnoreFullsize)
+			$this->youtubeFullsize = false;
 
 		$objTemplate = new \FrontendTemplate($this->getConfigData('youtube_template') != '' ? $this->getConfigData('youtube_template') : static::$strTemplate);
 
@@ -84,6 +89,16 @@ class YouTubeVideo
 
 		if ($this->getConfigData('youtubePrivacy')) {
 			$this->addPrivacyToTemplate($objTemplate);
+		}
+
+		// fullsize link template
+		if ($this->youtubeFullsize)
+		{
+			$objTemplateFullsize = new \FrontendTemplate(static::$strFullsizeTemplate);
+			$objTemplateFullsize->setData($objTemplate->getData());
+			$objTemplateFullsize->youtubeVideo = $this->generate(true);
+			$this->youtubeFullsize = true;
+			$objTemplate->fullsizeLink = $objTemplateFullsize->parse();
 		}
 		
 		return $objTemplate->parse();
