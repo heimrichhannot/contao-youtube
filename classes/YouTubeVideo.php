@@ -66,12 +66,9 @@ class YouTubeVideo
 
 	public function generate($blnIgnoreFullsize = false)
 	{
-		if (!$this->init()) {
+		if (!$this->init() && !$blnIgnoreFullsize) {
 			return '';
 		}
-
-		if ($blnIgnoreFullsize)
-			$this->youtubeFullsize = false;
 
 		$objTemplate = new \FrontendTemplate($this->getConfigData('youtube_template') != '' ? $this->getConfigData('youtube_template') : static::$strTemplate);
 
@@ -92,12 +89,12 @@ class YouTubeVideo
 		}
 
 		// fullsize link template
-		if ($this->youtubeFullsize)
+		if ($this->youtubeFullsize && !$blnIgnoreFullsize)
 		{
 			$objTemplateFullsize = new \FrontendTemplate(static::$strFullsizeTemplate);
 			$objTemplateFullsize->setData($objTemplate->getData());
+
 			$objTemplateFullsize->youtubeVideo = $this->generate(true);
-			$this->youtubeFullsize = true;
 			$objTemplate->fullsizeLink = $objTemplateFullsize->parse();
 		}
 		

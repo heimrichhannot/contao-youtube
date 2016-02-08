@@ -1,6 +1,6 @@
 
 <!-- indexer::stop -->
-<?php if ($this->youtubeFullsize): ?>
+<?php if ($this->fullsizeLink): ?>
 	<div class="youtube_modal">
 		<?= $this->fullsizeLink ?>
 	</div>
