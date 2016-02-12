@@ -38,6 +38,7 @@ tl_module:
 Name | Description
 ---- | -----------
 youtube_template | Select a youtube template within your news module.
+autoplay | Start the video on page view, only for reader modules.
 
 tl_page:[root pages only]
 

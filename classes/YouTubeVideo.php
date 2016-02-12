@@ -196,7 +196,7 @@ class YouTubeVideo
 		$strUrl = \HeimrichHannot\Haste\Util\Url::addQueryString('modestbranding=' . ($this->ytModestBranding ? 1 : 0), $strUrl);
 		$strUrl = \HeimrichHannot\Haste\Util\Url::addQueryString('showinfo=' . ($this->ytShowInfo ? 1 : 0), $strUrl);
 
-		if ($this->autoplay) {
+		if ($this->autoplay || $this->getConfigData('autoplay')) {
 			$strUrl = \HeimrichHannot\Haste\Util\Url::addQueryString('autoplay=1', $strUrl);
 		}
 

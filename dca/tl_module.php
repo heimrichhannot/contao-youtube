@@ -20,7 +20,7 @@ $dc = &$GLOBALS['TL_DCA']['tl_module'];
  */
 $dc['palettes']['newslist']    = str_replace('imgSize', 'imgSize;{youtube_legend},youtube_template', $dc['palettes']['newslist']);
 $dc['palettes']['newsarchive'] = str_replace('imgSize', 'imgSize;{youtube_legend},youtube_template', $dc['palettes']['newsarchive']);
-$dc['palettes']['newsreader']  = str_replace('imgSize', 'imgSize;{youtube_legend},youtube_template', $dc['palettes']['newsreader']);
+$dc['palettes']['newsreader']  = str_replace('imgSize', 'imgSize;{youtube_legend},youtube_template,autoplay', $dc['palettes']['newsreader']);
 
 
 /**
@@ -28,6 +28,14 @@ $dc['palettes']['newsreader']  = str_replace('imgSize', 'imgSize;{youtube_legend
  */
 $arrFields = array
 (
+	'autoplay' => array
+	(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['autoplay'],
+		'exclude'                 => true,
+		'inputType'               => 'checkbox',
+		'eval'                    => array('tl_class'=>'w50 m12'),
+		'sql'                     => "char(1) NOT NULL default ''"
+	),
 	'youtube_template' => array
 	(
 		'label'            => &$GLOBALS['TL_LANG']['tl_module']['youtube_template'],

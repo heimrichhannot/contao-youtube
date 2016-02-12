@@ -25,7 +25,7 @@ class YouTubeSettings
 	 * Config prefixes that can be extracted globally
 	 * @var array
 	 */
-	protected static $arrayKeyPrefixes = array('youtube', 'size', 'imgSize');
+	protected static $arrayKeyPrefixes = array('youtube', 'size', 'imgSize', 'autoplay');
 
 	protected $arrData = array();
 
