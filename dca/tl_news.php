@@ -48,6 +48,7 @@ $arrFields = array
 	'youtubeFullsize'  => &$GLOBALS['TL_DCA']['tl_content']['fields']['youtubeFullsize'],
 	'youtubeLinkText'  => &$GLOBALS['TL_DCA']['tl_content']['fields']['youtubeLinkText'],
 	'videoDuration'    => &$GLOBALS['TL_DCA']['tl_content']['fields']['videoDuration'],
+	'addPlayButton'    => &$GLOBALS['TL_DCA']['tl_content']['fields']['addPlayButton'],
 );
 
 $dc['fields'] = array_merge($dc['fields'], $arrFields);
