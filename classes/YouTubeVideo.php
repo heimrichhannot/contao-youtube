@@ -129,20 +129,7 @@ class YouTubeVideo
 
 		// add youtube thumbnail
 		if ($singleSRC == '') {
-			$ytPosterSRC = static::getYouTubeImage($this->youtube);
-
-			$strPosterSRC  = $this->youtube . '_' . basename($ytPosterSRC);
-			$strPosterPath = 'files/media/youtube/' . $strPosterSRC;
-
-			$objFile = new \File($strPosterPath, file_exists(TL_ROOT . '/' . $strPosterPath));
-
-			// simple file caching
-			if ($this->tstamp > $objFile->mtime || $objFile->size == 0) {
-				$objFile->write(@file_get_contents($ytPosterSRC));
-				$objFile->close();
-			}
-
-			$singleSRC = $objFile->value;
+			$singleSRC = static::getCachedYouTubePreviewImage();
 		}
 
 		if (file_exists(TL_ROOT . '/' . $singleSRC)) {
@@ -159,6 +146,24 @@ class YouTubeVideo
 
 			\Controller::addImageToTemplate($objTemplate, $arrImage);
 		}
+	}
+
+	public function getCachedYouTubePreviewImage()
+	{
+		$ytPosterSRC = static::getYouTubeImage($this->youtube);
+
+		$strPosterSRC  = $this->youtube . '_' . basename($ytPosterSRC);
+		$strPosterPath = 'files/media/youtube/' . $strPosterSRC;
+
+		$objFile = new \File($strPosterPath, file_exists(TL_ROOT . '/' . $strPosterPath));
+
+		// simple file caching
+		if ($this->tstamp > $objFile->mtime || $objFile->size == 0) {
+			$objFile->write(@file_get_contents($ytPosterSRC));
+			$objFile->close();
+		}
+
+		return $objFile->value;
 	}
 
 	protected function generatePrivacy()
