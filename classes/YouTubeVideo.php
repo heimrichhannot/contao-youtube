@@ -220,7 +220,7 @@ class YouTubeVideo
 
 		for ($x = 0; $x < sizeof($resolution); $x++) {
 			$url = 'http://img.youtube.com/vi/' . $strID . '/' . $resolution[$x] . '.jpg';
-			if (get_headers($url)[0] == 'HTTP/1.0 200 OK') {
+			if (strpos(get_headers($url)[0], '200 OK') !== false) {
 				break;
 			}
 		}
