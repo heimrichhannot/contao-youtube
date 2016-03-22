@@ -6,7 +6,7 @@
 	</div>
 <?php else: ?>
 	<div class="youtube_default">
-		<?php if ($this->addImage): ?>
+		<?php if ($this->addPreviewImage): ?>
 			<div class="video-thumbnail" data-media="youtube" title="<?= $this->playTitle; ?>"<?php if($this->youtubePrivacy): ?> data-privacy="true"<?php endif;?><?php if($this->autoplay): ?> data-autoplay="true"<?php endif;?>>
 				<figure class="image_container">
 					<?php $this->insert('picture_default', $this->picture); ?>
@@ -22,7 +22,7 @@
 			</div>
 		<?php endif; ?>
 
-		<div class="video-container"<?php if ($this->addImage): ?> style="display: none;"<?php endif; ?>>
+		<div class="video-container"<?php if ($this->addPreviewImage): ?> style="display: none;"<?php endif; ?>>
 			<?php if($this->youtubePrivacy): ?>
 				<iframe src="about:blank" data-src="<?= $this->youtubeSrc; ?>" allowfullscreen frameborder="0"></iframe>
 			<?php else: ?>
