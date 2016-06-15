@@ -181,7 +181,7 @@ class YouTubeVideo
 		$blnCheck = (($this->type == 'youtube' || $this->addYouTube) && $this->youtube != '');
 
 		// autoplay video from autoplay youtube id
-		if (\Input::get('autoplay') == $this->youtube) {
+		if (\Input::get('autoplay') == $this->youtube || $this->autoplay) {
 			$this->autoplay = true;
 		}
 
