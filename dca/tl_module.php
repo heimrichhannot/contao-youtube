@@ -26,26 +26,20 @@ $dc['palettes']['newsreader']  = str_replace('imgSize', 'imgSize;{youtube_legend
 /**
  * Fields
  */
-$arrFields = array
-(
-	'autoplay' => array
-	(
-		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['autoplay'],
-		'exclude'                 => true,
-		'inputType'               => 'checkbox',
-		'eval'                    => array('tl_class'=>'w50 m12'),
-		'sql'                     => "char(1) NOT NULL default ''"
-	),
-	'youtube_template' => array
-	(
-		'label'            => &$GLOBALS['TL_LANG']['tl_module']['youtube_template'],
-		'default'          => 'youtube_default',
-		'exclude'          => true,
-		'inputType'        => 'select',
-		'options_callback' => array('\\HeimrichHannot\\YouTube\\YouTubeBackend', 'getYouTubeTemplates'),
-		'eval'             => array('tl_class' => 'w50'),
-		'sql'              => "varchar(64) NOT NULL default ''",
-	)
-);
+$arrFields = [
+    'autoplay' => [
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['autoplay'],
+        'exclude'                 => true,
+        'inputType'               => 'checkbox',
+        'eval'                    => ['tl_class' =>'w50 m12'],
+        'sql'                     => "char(1) NOT NULL default ''"],
+    'youtube_template' => [
+        'label'            => &$GLOBALS['TL_LANG']['tl_module']['youtube_template'],
+        'default'          => 'youtube_default',
+        'exclude'          => true,
+        'inputType'        => 'select',
+        'options_callback' => ['\\HeimrichHannot\\YouTube\\YouTubeBackend', 'getYouTubeTemplates'],
+        'eval'             => ['tl_class' => 'w50'],
+        'sql'              => "varchar(64) NOT NULL default ''",]];
 
 $dc['fields'] = array_merge($dc['fields'], $arrFields);

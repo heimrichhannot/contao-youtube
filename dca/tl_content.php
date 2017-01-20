@@ -35,89 +35,75 @@ $dc['subpalettes']['addPreviewImage'] = 'posterSRC,size,addPlayButton';
 /**
  * Fields
  */
-$arrFields = array(
-	'addPreviewImage' => array
-	(
-		'label'     => &$GLOBALS['TL_LANG']['tl_content']['addPreviewImage'],
-		'exclude'   => true,
-		'inputType' => 'checkbox',
-		'eval'      => array('submitOnChange' => true, 'tl_class' => 'clr'),
-		'sql'       => "char(1) NOT NULL default ''",
-	),
-	
-	'addPlayButton' => array
-	(
-		'label'     => &$GLOBALS['TL_LANG']['tl_content']['addPlayButton'],
-		'exclude'   => true,
-		'inputType' => 'checkbox',
-		'eval'      => array('tl_class' => 'w50'),
-		'sql'       => "char(1) NOT NULL default ''",
-	),
+$arrFields = [
+    'addPreviewImage' => [
+        'label'     => &$GLOBALS['TL_LANG']['tl_content']['addPreviewImage'],
+        'exclude'   => true,
+        'inputType' => 'checkbox',
+        'eval'      => ['submitOnChange' => true, 'tl_class' => 'clr'],
+        'sql'       => "char(1) NOT NULL default ''",],
 
-	'videoDuration' => array
-	(
-		'label'     => &$GLOBALS['TL_LANG']['tl_content']['videoDuration'],
-		'exclude'   => true,
-		'search'    => true,
-		'sorting'   => true,
-		'flag'      => 1,
-		'inputType' => 'text',
-		'eval'      => array('maxlength' => 255, 'tl_class' => 'w50 clr'),
-		'sql'       => "varchar(255) NOT NULL default ''",
-	),
+    'addPlayButton' => [
+        'label'     => &$GLOBALS['TL_LANG']['tl_content']['addPlayButton'],
+        'exclude'   => true,
+        'inputType' => 'checkbox',
+        'eval'      => ['tl_class' => 'w50'],
+        'sql'       => "char(1) NOT NULL default ''",],
 
-	'ytHd' => array
-	(
-		'label'     => &$GLOBALS['TL_LANG']['tl_content']['ytHd'],
-		'exclude'   => true,
-		'inputType' => 'select',
-		'options'   => array('240', '360', '480', '720', '1080'),
-		'eval'      => array('includeBlankOption' => true, 'tl_class' => 'w50'),
-		'sql'       => "int(16) NOT NULL",
-	),
+    'videoDuration' => [
+        'label'     => &$GLOBALS['TL_LANG']['tl_content']['videoDuration'],
+        'exclude'   => true,
+        'search'    => true,
+        'sorting'   => true,
+        'flag'      => 1,
+        'inputType' => 'text',
+        'eval'      => ['maxlength' => 255, 'tl_class' => 'w50 clr'],
+        'sql'       => "varchar(255) NOT NULL default ''",],
 
-	'ytShowRelated' => array
-	(
-		'label'     => &$GLOBALS['TL_LANG']['tl_content']['ytShowRelated'],
-		'exclude'   => true,
-		'inputType' => 'checkbox',
-		'eval'      => array('tl_class' => 'w50'),
-		'sql'       => "char(1) NOT NULL default ''",
-	),
+    'ytHd' => [
+        'label'     => &$GLOBALS['TL_LANG']['tl_content']['ytHd'],
+        'exclude'   => true,
+        'inputType' => 'select',
+        'options'   => ['240', '360', '480', '720', '1080'],
+        'eval'      => ['includeBlankOption' => true, 'tl_class' => 'w50'],
+        'sql'       => "int(16) NOT NULL",],
 
-	'ytModestBranding' => array
-	(
-		'label'     => &$GLOBALS['TL_LANG']['tl_content']['ytModestBranding'],
-		'exclude'   => true,
-		'inputType' => 'checkbox',
-		'eval'      => array('tl_class' => 'w50'),
-		'sql'       => "char(1) NOT NULL default ''",
-	),
+    'ytShowRelated' => [
+        'label'     => &$GLOBALS['TL_LANG']['tl_content']['ytShowRelated'],
+        'exclude'   => true,
+        'inputType' => 'checkbox',
+        'eval'      => ['tl_class' => 'w50'],
+        'sql'       => "char(1) NOT NULL default ''",],
 
-	'ytShowInfo' => array
-	(
-		'label'     => &$GLOBALS['TL_LANG']['tl_content']['ytShowInfo'],
-		'exclude'   => true,
-		'inputType' => 'checkbox',
-		'eval'      => array('tl_class' => 'w50'),
-		'sql'       => "char(1) NOT NULL default ''",
-	),
+    'ytModestBranding' => [
+        'label'     => &$GLOBALS['TL_LANG']['tl_content']['ytModestBranding'],
+        'exclude'   => true,
+        'inputType' => 'checkbox',
+        'eval'      => ['tl_class' => 'w50'],
+        'sql'       => "char(1) NOT NULL default ''",],
 
-	'youtubeFullsize' => array(
-		'label'                   => &$GLOBALS['TL_LANG']['tl_content']['youtubeFullsize'],
-		'exclude'                 => true,
-		'inputType'               => 'checkbox',
-		'eval'                    => array('tl_class'=>'w50'),
-		'sql'                     => "char(1) NOT NULL default ''"
-	),
+    'ytShowInfo' => [
+        'label'     => &$GLOBALS['TL_LANG']['tl_content']['ytShowInfo'],
+        'exclude'   => true,
+        'inputType' => 'checkbox',
+        'eval'      => ['tl_class' => 'w50'],
+        'sql'       => "char(1) NOT NULL default ''",],
 
-	'youtubeLinkText' => array(
-		'label'                   => &$GLOBALS['TL_LANG']['tl_content']['youtubeLinkText'],
-		'exclude'                 => true,
-		'inputType'               => 'text',
-		'eval'                    => array('maxlength' => 255, 'tl_class' => 'w50'),
-		'sql'                     => "varchar(255) NOT NULL default ''"
-	)
-);
+    'youtubeFullsize' => [
+        'label'                   => &$GLOBALS['TL_LANG']['tl_content']['youtubeFullsize'],
+        'exclude'                 => true,
+        'inputType'               => 'checkbox',
+        'eval'                    => ['tl_class' =>'w50'],
+        'sql'                     => "char(1) NOT NULL default ''"
+    ],
+
+    'youtubeLinkText' => [
+        'label'                   => &$GLOBALS['TL_LANG']['tl_content']['youtubeLinkText'],
+        'exclude'                 => true,
+        'inputType'               => 'text',
+        'eval'                    => ['maxlength' => 255, 'tl_class' => 'w50'],
+        'sql'                     => "varchar(255) NOT NULL default ''"
+    ]
+];
 
 $dc['fields'] = array_merge($dc['fields'], $arrFields);

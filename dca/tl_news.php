@@ -26,30 +26,26 @@ $dc['palettes']['__selector__'][] = 'addYouTube';
  * Callbacks
  */
 
-$dc['config']['onload_callback'][] = array('tl_news_youtube', 'modifyPalettes');
+$dc['config']['onload_callback'][] = ['tl_news_youtube', 'modifyPalettes'];
 
 /**
  * Fields
  */
-$arrFields = array
-(
-	'addYouTube'       => array
-	(
-		'label'     => &$GLOBALS['TL_LANG']['tl_content']['addYouTube'],
-		'exclude'   => true,
-		'inputType' => 'checkbox',
-		'eval'      => array('submitOnChange' => true),
-		'sql'       => "char(1) NOT NULL default ''"
-	),
-	'youtube'          => &$GLOBALS['TL_DCA']['tl_content']['fields']['youtube'],
-	'autoplay'         => &$GLOBALS['TL_DCA']['tl_content']['fields']['autoplay'],
-	'addPreviewImage'  => &$GLOBALS['TL_DCA']['tl_content']['fields']['addPreviewImage'],
-	'posterSRC'        => &$GLOBALS['TL_DCA']['tl_content']['fields']['posterSRC'],
-	'youtubeFullsize'  => &$GLOBALS['TL_DCA']['tl_content']['fields']['youtubeFullsize'],
-	'youtubeLinkText'  => &$GLOBALS['TL_DCA']['tl_content']['fields']['youtubeLinkText'],
-	'videoDuration'    => &$GLOBALS['TL_DCA']['tl_content']['fields']['videoDuration'],
-	'addPlayButton'    => &$GLOBALS['TL_DCA']['tl_content']['fields']['addPlayButton'],
-);
+$arrFields = [
+    'addYouTube'       => [
+        'label'     => &$GLOBALS['TL_LANG']['tl_content']['addYouTube'],
+        'exclude'   => true,
+        'inputType' => 'checkbox',
+        'eval'      => ['submitOnChange' => true],
+        'sql'       => "char(1) NOT NULL default ''"],
+    'youtube'          => &$GLOBALS['TL_DCA']['tl_content']['fields']['youtube'],
+    'autoplay'         => &$GLOBALS['TL_DCA']['tl_content']['fields']['autoplay'],
+    'addPreviewImage'  => &$GLOBALS['TL_DCA']['tl_content']['fields']['addPreviewImage'],
+    'posterSRC'        => &$GLOBALS['TL_DCA']['tl_content']['fields']['posterSRC'],
+    'youtubeFullsize'  => &$GLOBALS['TL_DCA']['tl_content']['fields']['youtubeFullsize'],
+    'youtubeLinkText'  => &$GLOBALS['TL_DCA']['tl_content']['fields']['youtubeLinkText'],
+    'videoDuration'    => &$GLOBALS['TL_DCA']['tl_content']['fields']['videoDuration'],
+    'addPlayButton'    => &$GLOBALS['TL_DCA']['tl_content']['fields']['addPlayButton'],];
 
 $dc['fields'] = array_merge($dc['fields'], $arrFields);
 

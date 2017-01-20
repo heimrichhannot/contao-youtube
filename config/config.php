@@ -26,4 +26,4 @@ if (TL_MODE == 'FE')
 /**
  * Hooks
  */
-$GLOBALS['TL_HOOKS']['parseArticles'][] = array('\\HeimrichHannot\\YouTube\\YouTubeHooks', 'parseNewsArticlesHook');
+$GLOBALS['TL_HOOKS']['parseArticles'][] = ['\\HeimrichHannot\\YouTube\\YouTubeHooks', 'parseNewsArticlesHook'];

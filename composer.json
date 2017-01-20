@@ -17,6 +17,7 @@
         "issues":"https://github.com/heimrichhannot/contao-youtube/issues"
     },
     "require": {
+        "php": "~5.6 || ^7.0",
         "contao/core": ">=3.2,<4-dev",
         "heimrichhannot/contao-haste_plus": ">=1.1,<2-dev"
     },

@@ -25,9 +25,9 @@ class YouTubeSettings
 	 * Config prefixes that can be extracted globally
 	 * @var array
 	 */
-	protected static $arrayKeyPrefixes = array('youtube', 'size', 'imgSize', 'autoplay');
+	protected static $arrayKeyPrefixes = ['youtube', 'size', 'imgSize', 'autoplay'];
 
-	protected $arrData = array();
+	protected $arrData = [];
 
 	protected function __construct()
 	{
@@ -61,7 +61,7 @@ class YouTubeSettings
 	 */
 	public function getData()
 	{
-		$arrData = array();
+		$arrData = [];
 
 		$objRoot = \Frontend::getRootPageFromUrl();
 
@@ -72,7 +72,7 @@ class YouTubeSettings
 
 		if(!is_array($this->arrData))
 		{
-			$this->arrData = array();
+			$this->arrData = [];
 		}
 		
 		$arrRootPageData = \HeimrichHannot\Haste\Util\Arrays::filterByPrefixes($objRoot->row(), self::$arrayKeyPrefixes);

@@ -12,17 +12,17 @@
 /**
  * Register the namespaces
  */
-ClassLoader::addNamespaces(array
-(
-	'HeimrichHannot',
-));
+ClassLoader::addNamespaces(
+    [
+	'HeimrichHannot',]
+);
 
 
 /**
  * Register the classes
  */
-ClassLoader::addClasses(array
-(
+ClassLoader::addClasses(
+    [
 	// Classes
 	'HeimrichHannot\YouTube\UpgradeHandler'  => 'system/modules/youtube/classes/UpgradeHandler.php',
 	'HeimrichHannot\YouTube\YouTubeVideo'    => 'system/modules/youtube/classes/YouTubeVideo.php',
@@ -31,20 +31,20 @@ ClassLoader::addClasses(array
 	'HeimrichHannot\YouTube\YouTubeHooks'    => 'system/modules/youtube/classes/YouTubeHooks.php',
 
 	// Elements
-	'HeimrichHannot\YouTube\ContentYouTube'  => 'system/modules/youtube/elements/ContentYouTube.php',
-));
+	'HeimrichHannot\YouTube\ContentYouTube'  => 'system/modules/youtube/elements/ContentYouTube.php',]
+);
 
 
 /**
  * Register the templates
  */
-TemplateLoader::addFiles(array
-(
+TemplateLoader::addFiles(
+    [
 	'youtubeprivacy_default' => 'system/modules/youtube/templates/privacy',
 	'ce_youtube'             => 'system/modules/youtube/templates/elements',
 	'youtube_player'         => 'system/modules/youtube/templates/youtube',
 	'youtube_image'          => 'system/modules/youtube/templates/youtube',
 	'youtube_modal_colorbox' => 'system/modules/youtube/templates/youtube',
 	'youtube_modal'          => 'system/modules/youtube/templates/youtube',
-	'youtube_default'        => 'system/modules/youtube/templates/youtube',
-));
+	'youtube_default'        => 'system/modules/youtube/templates/youtube',]
+);
