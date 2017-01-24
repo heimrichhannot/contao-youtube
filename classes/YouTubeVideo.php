@@ -165,7 +165,7 @@ class YouTubeVideo
 
     public function getCachedYouTubePreviewImage()
     {
-        $ytPosterSRC = static::getYouTubeImage($this->youtube);
+        list($ytPosterSRC, $strResult) = static::getYouTubeImage($this->youtube);
 
         $strPosterSRC  = $this->youtube . '_' . basename($ytPosterSRC);
         $strPosterPath = 'files/media/youtube/' . $strPosterSRC;
@@ -175,7 +175,7 @@ class YouTubeVideo
         // simple file caching
         if ($this->tstamp > $objFile->mtime || $objFile->size == 0)
         {
-            $objFile->write(@file_get_contents($ytPosterSRC));
+            $objFile->write($strResult);
             $objFile->close();
         }
 
@@ -207,7 +207,7 @@ class YouTubeVideo
         return $blnCheck;
     }
 
-    public function getYoutubeSrc()
+    public function getYouTubeSrc()
     {
         if (!$this->init())
         {
@@ -231,6 +231,8 @@ class YouTubeVideo
 
     public static function getYouTubeImage($strID)
     {
+        $url = '';
+        $strResult = '';
         $resolution = [
             'maxresdefault',
             'sddefault',
@@ -242,13 +244,27 @@ class YouTubeVideo
         for ($x = 0; $x < sizeof($resolution); $x++)
         {
             $url = 'http://img.youtube.com/vi/' . $strID . '/' . $resolution[$x] . '.jpg';
-            if (strpos(get_headers($url)[0], '200 OK') !== false)
+
+            $objCurl = curl_init();
+            curl_setopt($objCurl, CURLOPT_URL, $url);
+            curl_setopt($objCurl, CURLOPT_RETURNTRANSFER, 1);
+
+            if (\Config::get('hpProxy'))
+            {
+                curl_setopt($objCurl, CURLOPT_PROXY, \Config::get('hpProxy'));
+            }
+
+            $strResult = curl_exec($objCurl);
+            curl_close($objCurl);
+
+
+            if ($strResult)
             {
                 break;
             }
         }
 
-        return $url;
+        return [$url, $strResult];
     }
 
 
