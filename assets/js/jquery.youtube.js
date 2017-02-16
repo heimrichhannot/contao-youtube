@@ -24,7 +24,7 @@
             });
 
             // handle click event
-            $('[data-media=youtube]').on('click', function()
+            $('body').on('click', '[data-media=youtube]', function()
             {
                 YouTubeVideo.initVideo(this);
             })
