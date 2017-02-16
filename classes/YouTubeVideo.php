@@ -11,6 +11,8 @@
 
 namespace HeimrichHannot\YouTube;
 
+use HeimrichHannot\Haste\Util\Curl;
+
 class YouTubeVideo
 {
     protected static $strTemplate = 'youtube_default';
@@ -26,7 +28,7 @@ class YouTubeVideo
     /**
      * Current object instance (do not remove)
      *
-     * @var object
+     * @var YouTubeVideo
      */
     protected static $objInstance;
 
@@ -245,20 +247,7 @@ class YouTubeVideo
         {
             $url = 'http://img.youtube.com/vi/' . $strID . '/' . $resolution[$x] . '.jpg';
 
-            $objCurl = curl_init();
-            curl_setopt($objCurl, CURLOPT_URL, $url);
-            curl_setopt($objCurl, CURLOPT_RETURNTRANSFER, 1);
-
-            if (\Config::get('hpProxy'))
-            {
-                curl_setopt($objCurl, CURLOPT_PROXY, \Config::get('hpProxy'));
-            }
-
-            $strResult = curl_exec($objCurl);
-            curl_close($objCurl);
-
-
-            if ($strResult)
+            if ($strResult = Curl::request($url))
             {
                 break;
             }

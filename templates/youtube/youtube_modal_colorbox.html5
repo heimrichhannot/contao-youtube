@@ -6,9 +6,9 @@
 	});
 -->
 <a class="youtube cBoxElement hidden-xs" href="<?= $this->youtubeSrc ?>">
-	<?php echo $this->youtubeLinkText; ?>
+    <?php echo $this->youtubeLinkText; ?>
 </a>
 
 <a class="youtube visible-xs" href="<?= $this->youtubeSrc ?>">
-	<?= $this->youtubeLinkText; ?>
+    <?= $this->youtubeLinkText; ?>
 </a>
