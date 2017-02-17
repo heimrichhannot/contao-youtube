@@ -9,24 +9,24 @@
  * @license http://www.gnu.org/licences/lgpl-3.0.html LGPL
  */
 
-$dc = &$GLOBALS['TL_DCA']['tl_page'];
+$arrDca = &$GLOBALS['TL_DCA']['tl_page'];
 
 /**
  * Selectors
  */
-$dc['palettes']['__selector__'][] = 'youtubePrivacy';
+$arrDca['palettes']['__selector__'][] = 'youtubePrivacy';
 
 /**
  * Palettes
  */
 $replace = 'adminEmail;{youtube_legend},youtube_template,youtubePrivacy;';
 
-$dc['palettes']['root'] = str_replace('adminEmail;', $replace, $dc['palettes']['root']);
+$arrDca['palettes']['root'] = str_replace('adminEmail;', $replace, $arrDca['palettes']['root']);
 
 /**
  * Subpalettes
  */
-$dc['subpalettes']['youtubePrivacy'] = 'youtubePrivacyTemplate';
+$arrDca['subpalettes']['youtubePrivacy'] = 'youtubePrivacyTemplate';
 
 
 /**
@@ -56,4 +56,4 @@ $arrFields = [
         'eval'             => ['tl_class' => 'w50', 'mandatory' => true],
         'sql'              => "varchar(64) NOT NULL default ''",],];
 
-$dc['fields'] = array_merge($dc['fields'], $arrFields);
+$arrDca['fields'] = array_merge($arrDca['fields'], $arrFields);

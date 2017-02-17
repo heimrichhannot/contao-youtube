@@ -25,6 +25,8 @@ class YouTubeVideo
 
     protected static $privacyEmbedSrc = '//www.youtube-nocookie.com/embed/';
 
+    protected static $strVideoImageUrl = 'https://www.googleapis.com/youtube/v3/videos?id=%s&key=%s&fields=items(snippet(thumbnails))&part=snippet';
+
     /**
      * Current object instance (do not remove)
      *
@@ -169,6 +171,11 @@ class YouTubeVideo
     {
         list($ytPosterSRC, $strResult) = static::getYouTubeImage($this->youtube);
 
+        if (!$ytPosterSRC || !$strResult)
+        {
+            return false;
+        }
+
         $strPosterSRC  = $this->youtube . '_' . basename($ytPosterSRC);
         $strPosterPath = 'files/media/youtube/' . $strPosterSRC;
 
@@ -233,27 +240,27 @@ class YouTubeVideo
 
     public static function getYouTubeImage($strID)
     {
-        $url = '';
-        $strResult = '';
-        $resolution = [
-            'maxresdefault',
-            'sddefault',
-            'mqdefault',
-            'hqdefault',
-            'default',
-        ];
-
-        for ($x = 0; $x < sizeof($resolution); $x++)
+        if (!($strApiKey = \Config::get('youtubeApiKey')))
         {
-            $url = 'http://img.youtube.com/vi/' . $strID . '/' . $resolution[$x] . '.jpg';
-
-            if ($strResult = Curl::request($url))
-            {
-                break;
-            }
+            throw new \Exception('Please specify your API key in the settings if you want to retrieve youtube thumbnails.');
         }
 
-        return [$url, $strResult];
+        $strResult = Curl::request(sprintf(static::$strVideoImageUrl, $strID, $strApiKey));
+
+        try {
+            $objResponse = json_decode($strResult);
+
+            foreach (['maxres', 'standard', 'high', 'medium', 'default'] as $strQuality)
+            {
+                if (property_exists($objResponse->items[0]->snippet->thumbnails, $strQuality))
+                {
+                    return [$strID . '_' . $strQuality . '.jpg', Curl::request($objResponse->items[0]->snippet->thumbnails->{$strQuality}->url)];
+                }
+            }
+        } catch (\Exception $e)
+        {
+            return [null, null];
+        }
     }
 
 

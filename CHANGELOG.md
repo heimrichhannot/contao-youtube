@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.3.12] - 2017-02-17
+
+### Fixed
+- thumbnails are now loaded over YouTube API, API key now needed therefore
+
 ## [1.3.11] - 2017-02-16
 
 ### Fixed

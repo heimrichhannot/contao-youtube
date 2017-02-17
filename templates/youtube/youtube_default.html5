@@ -12,8 +12,8 @@
                     <?php $this->insert('picture_default', $this->picture); ?>
                     <?php if ($this->videoDuration): ?>
                         <span class="duration">
-							<?php echo $this->videoDuration; ?>
-						</span>
+                            <?php echo $this->videoDuration; ?>
+                        </span>
                     <?php endif; ?>
                     <?php if ($this->addPlayButton): ?>
                         <span class="play-button"></span>
