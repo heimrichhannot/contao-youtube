@@ -169,14 +169,7 @@ class YouTubeVideo
 
     public function getCachedYouTubePreviewImage()
     {
-        list($ytPosterSRC, $strResult) = static::getYouTubeImage($this->youtube);
-
-        if (!$ytPosterSRC || !$strResult)
-        {
-            return false;
-        }
-
-        $strPosterSRC  = $this->youtube . '_' . basename($ytPosterSRC);
+        $strPosterSRC  = $this->youtube . '.jpg';
         $strPosterPath = 'files/media/youtube/' . $strPosterSRC;
 
         $objFile = new \File($strPosterPath, file_exists(TL_ROOT . '/' . $strPosterPath));
@@ -184,6 +177,13 @@ class YouTubeVideo
         // simple file caching
         if ($this->tstamp > $objFile->mtime || $objFile->size == 0)
         {
+            list($ytPosterSRC, $strResult) = static::getYouTubeImage($this->youtube);
+
+            if (!$ytPosterSRC || !$strResult)
+            {
+                return false;
+            }
+
             $objFile->write($strResult);
             $objFile->close();
         }
@@ -242,7 +242,14 @@ class YouTubeVideo
     {
         if (!($strApiKey = \Config::get('youtubeApiKey')))
         {
-            throw new \Exception('Please specify your API key in the settings if you want to retrieve youtube thumbnails.');
+            if (TL_MODE == 'BE' && \BackendUser::getInstance()->isAdmin)
+            {
+                throw new \Exception('Please specify your API key in the settings if you want to retrieve youtube thumbnails.');
+            }
+            else
+            {
+                \System::log('Please specify your API key in the settings if you want to retrieve youtube thumbnails.', __METHOD__, TL_ERROR);
+            }
         }
 
         $strResult = Curl::request(sprintf(static::$strVideoImageUrl, $strID, $strApiKey));
