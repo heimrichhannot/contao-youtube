@@ -5,7 +5,7 @@ $arrDca = &$GLOBALS['TL_DCA']['tl_settings'];
 /**
  * Palettes
  */
-$arrDca['palettes']['default'] .= '{youtube_legend},youtubeApiKey;';
+$arrDca['palettes']['default'] .= ';{youtube_legend},youtubeApiKey;';
 
 /**
  * Fields

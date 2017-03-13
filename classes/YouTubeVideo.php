@@ -242,7 +242,7 @@ class YouTubeVideo
     {
         if (!($strApiKey = \Config::get('youtubeApiKey')))
         {
-            if (TL_MODE == 'BE' && \BackendUser::getInstance()->isAdmin)
+            if (\BackendUser::getInstance()->isAdmin)
             {
                 throw new \Exception('Please specify your API key in the settings if you want to retrieve youtube thumbnails.');
             }
@@ -255,13 +255,21 @@ class YouTubeVideo
         $strResult = Curl::request(sprintf(static::$strVideoImageUrl, $strID, $strApiKey));
 
         try {
+
             $objResponse = json_decode($strResult);
 
             foreach (['maxres', 'standard', 'high', 'medium', 'default'] as $strQuality)
             {
                 if (property_exists($objResponse->items[0]->snippet->thumbnails, $strQuality))
                 {
-                    return [$strID . '_' . $strQuality . '.jpg', Curl::request($objResponse->items[0]->snippet->thumbnails->{$strQuality}->url)];
+                    $varImage = Curl::request($objResponse->items[0]->snippet->thumbnails->{$strQuality}->url);
+
+                    if (!$varImage)
+                    {
+                        return [null, null];
+                    }
+
+                    return [$strID . '_' . $strQuality . '.jpg', $varImage];
                 }
             }
         } catch (\Exception $e)
