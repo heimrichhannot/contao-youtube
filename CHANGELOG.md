@@ -7,11 +7,6 @@ All notable changes to this project will be documented in this file.
 - tl_settings palette handling
 - cache for youtube preview images
 
-## [1.3.13] - 2017-02-17
-
-### Fixed
-- thumbnails are now loaded over YouTube API, API key now needed therefore
-
 ## [1.3.12] - 2017-02-17
 
 ### Fixed
