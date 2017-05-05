@@ -4,7 +4,11 @@
         <div class="video-thumbnail" data-media="youtube"
              title="<?= $this->playTitle; ?>"<?php if ($this->youtubePrivacy): ?> data-privacy="true"<?php endif; ?><?php if ($this->autoplay): ?> data-autoplay="true"<?php endif; ?>>
             <figure class="image_container">
-                <?php $this->insert('picture_default', $this->picture); ?>
+                <?php if ($this->skipImageCaching): ?>
+                    <img src="<?= $this->previewImageUrl ?>">
+                <?php else: ?>
+                    <?php $this->insert('picture_default', $this->picture); ?>
+                <?php endif; ?>
                 <span class="play-button"></span>
             </figure>
         </div>

@@ -145,25 +145,34 @@ class YouTubeVideo
         // add youtube thumbnail
         if ($singleSRC == '')
         {
-            $singleSRC = static::getCachedYouTubePreviewImage();
-        }
-
-        if (file_exists(TL_ROOT . '/' . $singleSRC))
-        {
-            $arrImage['singleSRC'] = $singleSRC;
-            $arrImage['alt']       = 'youtube-image-' . $this->youtube;
-
-            if ($this->getConfigData('imgSize') != '' || $this->getConfigData('size'))
+            if ($this->skipImageCaching)
             {
-                $size = deserialize($this->getConfigData('imgSize') ? $this->getConfigData('imgSize') : $this->getConfigData('size'));
+                $objTemplate->skipImageCaching = $this->skipImageCaching;
 
-                if ($size[0] > 0 || $size[1] > 0 || is_numeric($size[2]))
+                list($ytPosterSRC, $strResult, $objTemplate->previewImageUrl) = static::getYouTubeImage($this->youtube);
+            }
+            else
+            {
+                $singleSRC = static::getCachedYouTubePreviewImage();
+
+                if (file_exists(TL_ROOT . '/' . $singleSRC))
                 {
-                    $arrImage['size'] = $size;
+                    $arrImage['singleSRC'] = $singleSRC;
+                    $arrImage['alt']       = 'youtube-image-' . $this->youtube;
+
+                    if ($this->getConfigData('imgSize') != '' || $this->getConfigData('size'))
+                    {
+                        $size = deserialize($this->getConfigData('imgSize') ? $this->getConfigData('imgSize') : $this->getConfigData('size'));
+
+                        if ($size[0] > 0 || $size[1] > 0 || is_numeric($size[2]))
+                        {
+                            $arrImage['size'] = $size;
+                        }
+                    }
+
+                    \Controller::addImageToTemplate($objTemplate, $arrImage);
                 }
             }
-
-            \Controller::addImageToTemplate($objTemplate, $arrImage);
         }
     }
 
@@ -177,9 +186,9 @@ class YouTubeVideo
         // simple file caching
         if ($this->tstamp > $objFile->mtime || $objFile->size == 0)
         {
-            list($ytPosterSRC, $strResult) = static::getYouTubeImage($this->youtube);
+            list($ytPosterSRC, $strResult, $strImageUrl) = static::getYouTubeImage($this->youtube);
 
-            if (!$ytPosterSRC || !$strResult)
+            if (!$ytPosterSRC || !$strResult || !$strImageUrl)
             {
                 return false;
             }
@@ -269,7 +278,7 @@ class YouTubeVideo
                         return [null, null];
                     }
 
-                    return [$strID . '_' . $strQuality . '.jpg', $varImage];
+                    return [$strID . '_' . $strQuality . '.jpg', $varImage, $objResponse->items[0]->snippet->thumbnails->{$strQuality}->url];
                 }
             }
         } catch (\Exception $e)
