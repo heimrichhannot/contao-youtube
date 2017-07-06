@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.3.16] - 2017-07-06
+
+### Added
+- `youtube_template` to `tl_content` to make youtube_template able to override
+
 ## [1.3.15] - 2017-05-05
 
 ### Added

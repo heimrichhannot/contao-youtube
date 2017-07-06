@@ -24,7 +24,7 @@ $dc['palettes']['youtube'] =
 	'{title_legend},type,name,headline;
 	{video_legend},youtube,autoplay,videoDuration,ytHd,ytShowRelated,ytModestBranding,ytShowInfo,youtubeFullsize,youtubeLinkText;
 	{previewImage_legend},addPreviewImage;
-	{expert_legend:hide},cssID,space;';
+	{expert_legend:hide},youtube_template,cssID,space;';
 
 /**
  * Subpalettes
@@ -103,7 +103,16 @@ $arrFields = [
         'inputType'               => 'text',
         'eval'                    => ['maxlength' => 255, 'tl_class' => 'w50'],
         'sql'                     => "varchar(255) NOT NULL default ''"
-    ]
+    ],
+    'youtube_template' => [
+        'label'            => &$GLOBALS['TL_LANG']['tl_content']['youtube_template'],
+        'default'          => 'youtube_default',
+        'exclude'          => true,
+        'inputType'        => 'select',
+        'options_callback' => ['\\HeimrichHannot\\YouTube\\YouTubeBackend', 'getYouTubeTemplates'],
+        'eval'             => ['tl_class' => 'w50', 'includeBlankOption' => true],
+        'sql'              => "varchar(64) NOT NULL default ''",
+    ],
 ];
 
 $dc['fields'] = array_merge($dc['fields'], $arrFields);

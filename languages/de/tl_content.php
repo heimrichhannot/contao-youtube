@@ -25,3 +25,4 @@ $GLOBALS['TL_LANG']['tl_content']['ytModestBranding'] = ['YouTube-Branding ausbl
 $GLOBALS['TL_LANG']['tl_content']['ytShowInfo'] = ['Video-Infos anzeigen', 'Wählen Sie diese Option, wenn Infos zum Video angezeit werden sollen.'];
 $GLOBALS['TL_LANG']['tl_content']['youtubeFullsize'] = ['Großansicht/Neues Fenster', 'Großansicht des Videos in einer Lightbox bzw. den Link in einem neuem Browserfenster öffnen.'];
 $GLOBALS['TL_LANG']['tl_content']['youtubeLinkText'] = ['Link-Text', 'Der angezeigte Text des Links, der die Lightbox öffnet.'];
+$GLOBALS['TL_LANG']['tl_content']['youtube_template'] = ['Individuelles Youtube-Template', 'Überschreiben Sie das Standard Youtube-Template mit einer eigenen Vorlage.'];
