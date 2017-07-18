@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.3.17] - 2017-07-18
+
+### Fixed
+- exceptions thrown if no api key was provided within `tl_settings`
+
 ## [1.3.16] - 2017-07-06
 
 ### Added

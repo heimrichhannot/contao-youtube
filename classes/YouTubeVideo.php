@@ -153,9 +153,7 @@ class YouTubeVideo
             }
             else
             {
-                $singleSRC = static::getCachedYouTubePreviewImage();
-
-                if (file_exists(TL_ROOT . '/' . $singleSRC))
+                if (($singleSRC = static::getCachedYouTubePreviewImage()) !== false && file_exists(TL_ROOT . '/' . $singleSRC))
                 {
                     $arrImage['singleSRC'] = $singleSRC;
                     $arrImage['alt']       = 'youtube-image-' . $this->youtube;
@@ -266,6 +264,11 @@ class YouTubeVideo
         try {
 
             $objResponse = json_decode($strResult);
+
+            if($objResponse->error)
+            {
+                return [null, null];
+            }
 
             foreach (['maxres', 'standard', 'high', 'medium', 'default'] as $strQuality)
             {
