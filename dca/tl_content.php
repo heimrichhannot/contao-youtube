@@ -21,7 +21,7 @@ $dc['palettes']['__selector__'][] = 'addPreviewImage';
  * Palettes
  */
 $dc['palettes']['youtube'] =
-	'{title_legend},type,name,headline;
+    '{title_legend},type,name,headline;
 	{video_legend},youtube,autoplay,videoDuration,ytHd,ytShowRelated,ytModestBranding,ytShowInfo,youtubeFullsize,youtubeLinkText;
 	{previewImage_legend},addPreviewImage;
 	{expert_legend:hide},youtube_template,cssID,space;';
@@ -41,14 +41,16 @@ $arrFields = [
         'exclude'   => true,
         'inputType' => 'checkbox',
         'eval'      => ['submitOnChange' => true, 'tl_class' => 'clr'],
-        'sql'       => "char(1) NOT NULL default ''",],
+        'sql'       => "char(1) NOT NULL default ''",
+    ],
 
     'addPlayButton' => [
         'label'     => &$GLOBALS['TL_LANG']['tl_content']['addPlayButton'],
         'exclude'   => true,
         'inputType' => 'checkbox',
         'eval'      => ['tl_class' => 'w50'],
-        'sql'       => "char(1) NOT NULL default ''",],
+        'sql'       => "char(1) NOT NULL default ''",
+    ],
 
     'videoDuration' => [
         'label'     => &$GLOBALS['TL_LANG']['tl_content']['videoDuration'],
@@ -58,7 +60,8 @@ $arrFields = [
         'flag'      => 1,
         'inputType' => 'text',
         'eval'      => ['maxlength' => 255, 'tl_class' => 'w50 clr'],
-        'sql'       => "varchar(255) NOT NULL default ''",],
+        'sql'       => "varchar(255) NOT NULL default ''",
+    ],
 
     'ytHd' => [
         'label'     => &$GLOBALS['TL_LANG']['tl_content']['ytHd'],
@@ -66,43 +69,46 @@ $arrFields = [
         'inputType' => 'select',
         'options'   => ['240', '360', '480', '720', '1080'],
         'eval'      => ['includeBlankOption' => true, 'tl_class' => 'w50'],
-        'sql'       => "int(16) NOT NULL",],
-
+        'sql'       => "int(16) NOT NULL default '0'",
+    ],
     'ytShowRelated' => [
         'label'     => &$GLOBALS['TL_LANG']['tl_content']['ytShowRelated'],
         'exclude'   => true,
         'inputType' => 'checkbox',
         'eval'      => ['tl_class' => 'w50'],
-        'sql'       => "char(1) NOT NULL default ''",],
+        'sql'       => "char(1) NOT NULL default ''",
+    ],
 
     'ytModestBranding' => [
         'label'     => &$GLOBALS['TL_LANG']['tl_content']['ytModestBranding'],
         'exclude'   => true,
         'inputType' => 'checkbox',
         'eval'      => ['tl_class' => 'w50'],
-        'sql'       => "char(1) NOT NULL default ''",],
+        'sql'       => "char(1) NOT NULL default ''",
+    ],
 
     'ytShowInfo' => [
         'label'     => &$GLOBALS['TL_LANG']['tl_content']['ytShowInfo'],
         'exclude'   => true,
         'inputType' => 'checkbox',
         'eval'      => ['tl_class' => 'w50'],
-        'sql'       => "char(1) NOT NULL default ''",],
-
-    'youtubeFullsize' => [
-        'label'                   => &$GLOBALS['TL_LANG']['tl_content']['youtubeFullsize'],
-        'exclude'                 => true,
-        'inputType'               => 'checkbox',
-        'eval'                    => ['tl_class' =>'w50'],
-        'sql'                     => "char(1) NOT NULL default ''"
+        'sql'       => "char(1) NOT NULL default ''",
     ],
 
-    'youtubeLinkText' => [
-        'label'                   => &$GLOBALS['TL_LANG']['tl_content']['youtubeLinkText'],
-        'exclude'                 => true,
-        'inputType'               => 'text',
-        'eval'                    => ['maxlength' => 255, 'tl_class' => 'w50'],
-        'sql'                     => "varchar(255) NOT NULL default ''"
+    'youtubeFullsize' => [
+        'label'     => &$GLOBALS['TL_LANG']['tl_content']['youtubeFullsize'],
+        'exclude'   => true,
+        'inputType' => 'checkbox',
+        'eval'      => ['tl_class' => 'w50'],
+        'sql'       => "char(1) NOT NULL default ''"
+    ],
+
+    'youtubeLinkText'  => [
+        'label'     => &$GLOBALS['TL_LANG']['tl_content']['youtubeLinkText'],
+        'exclude'   => true,
+        'inputType' => 'text',
+        'eval'      => ['maxlength' => 255, 'tl_class' => 'w50'],
+        'sql'       => "varchar(255) NOT NULL default ''"
     ],
     'youtube_template' => [
         'label'            => &$GLOBALS['TL_LANG']['tl_content']['youtube_template'],

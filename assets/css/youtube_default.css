@@ -1,0 +1,55 @@
+.youtube_default,
+.youtube_player,
+.youtube_image {
+    position: relative;
+    display: block;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    /* 16:9 */
+}
+
+.youtube_default iframe,
+.youtube_default object,
+.youtube_default embed,
+.youtube_player iframe,
+.youtube_player object,
+.youtube_player embed,
+.youtube_image iframe,
+.youtube_image object,
+.youtube_image embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    border: 0;
+}
+
+.youtube_default .video-thumbnail,
+.youtube_player .video-thumbnail,
+.youtube_image .video-thumbnail {
+    cursor: pointer;
+}
+
+.youtube_default .video-thumbnail .image_container,
+.youtube_player .video-thumbnail .image_container,
+.youtube_image .video-thumbnail .image_container {
+    position: relative;
+}
+
+.youtube_default .video-thumbnail .image_container .play-button,
+.youtube_player .video-thumbnail .image_container .play-button,
+.youtube_image .video-thumbnail .image_container .play-button {
+    background: url(/system/modules/youtube/assets/img/play.png) no-repeat 50% 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 30%;
+}
+
+/*# sourceMappingURL=youtube_default.css.map */

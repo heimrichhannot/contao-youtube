@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.4.1] - 2017-09-05
+
+### Fixed
+- Contao 4 incompatibilities
+
 ## [1.4.0] - 2017-09-05
 
 ### Added

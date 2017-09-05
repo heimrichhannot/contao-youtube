@@ -56,8 +56,7 @@ class YouTubeVideo
      */
     public static function getInstance()
     {
-        if (static::$objInstance === null)
-        {
+        if (static::$objInstance === null) {
             static::$objInstance = new static();
         }
 
@@ -71,8 +70,7 @@ class YouTubeVideo
 
     public function generate($blnIgnoreFullsize = false)
     {
-        if (!$this->init() && !$blnIgnoreFullsize)
-        {
+        if (!$this->init() && !$blnIgnoreFullsize) {
             return '';
         }
 
@@ -90,19 +88,16 @@ class YouTubeVideo
         $this->addConfigToTemplate($objTemplate);
 
         // add preview image when in privacy mode, cause we need something to show
-        if ($this->addPreviewImage || $this->getConfigData('youtubePrivacy'))
-        {
+        if ($this->addPreviewImage || $this->getConfigData('youtubePrivacy')) {
             $this->addPreviewImageToTemplate($objTemplate);
         }
 
-        if ($this->getConfigData('youtubePrivacy'))
-        {
+        if ($this->getConfigData('youtubePrivacy')) {
             $this->addPrivacyToTemplate($objTemplate);
         }
 
         // fullsize link template
-        if ($this->youtubeFullsize && !$blnIgnoreFullsize)
-        {
+        if ($this->youtubeFullsize && !$blnIgnoreFullsize) {
             $objTemplateFullsize = new \FrontendTemplate(static::$strFullsizeTemplate);
             $objTemplateFullsize->setData($objTemplate->getData());
 
@@ -122,8 +117,7 @@ class YouTubeVideo
     protected function addConfigToTemplate($objTemplate)
     {
         // add settings
-        foreach ($this->getConfig() as $key => $value)
-        {
+        foreach ($this->getConfig() as $key => $value) {
             $objTemplate->{$key} = $value;
         }
     }
@@ -132,38 +126,29 @@ class YouTubeVideo
     {
         $singleSRC = '';
 
-        if ($this->posterSRC != '')
-        {
+        if ($this->posterSRC != '') {
             $objModel = \FilesModel::findByUuid($this->posterSRC);
 
-            if ($objModel !== null)
-            {
+            if ($objModel !== null) {
                 $singleSRC = $objModel->path;
             }
         }
 
         // add youtube thumbnail
-        if ($singleSRC == '')
-        {
-            if ($this->skipImageCaching)
-            {
+        if ($singleSRC == '') {
+            if ($this->skipImageCaching) {
                 $objTemplate->skipImageCaching = $this->skipImageCaching;
 
                 list($ytPosterSRC, $strResult, $objTemplate->previewImageUrl) = static::getYouTubeImage($this->youtube);
-            }
-            else
-            {
-                if (($singleSRC = static::getCachedYouTubePreviewImage()) !== false && file_exists(TL_ROOT . '/' . $singleSRC))
-                {
+            } else {
+                if (($singleSRC = static::getCachedYouTubePreviewImage()) !== false && file_exists(TL_ROOT . '/' . $singleSRC)) {
                     $arrImage['singleSRC'] = $singleSRC;
                     $arrImage['alt']       = 'youtube-image-' . $this->youtube;
 
-                    if ($this->getConfigData('imgSize') != '' || $this->getConfigData('size'))
-                    {
+                    if ($this->getConfigData('imgSize') != '' || $this->getConfigData('size')) {
                         $size = deserialize($this->getConfigData('imgSize') ? $this->getConfigData('imgSize') : $this->getConfigData('size'));
 
-                        if ($size[0] > 0 || $size[1] > 0 || is_numeric($size[2]))
-                        {
+                        if ($size[0] > 0 || $size[1] > 0 || is_numeric($size[2])) {
                             $arrImage['size'] = $size;
                         }
                     }
@@ -177,17 +162,20 @@ class YouTubeVideo
     public function getCachedYouTubePreviewImage()
     {
         $strPosterSRC  = $this->youtube . '.jpg';
-        $strPosterPath = 'files/media/youtube/' . $strPosterSRC;
+        $strPosterDir  = 'files/media/youtube/';
+        $strPosterPath = $strPosterDir . $strPosterSRC;
 
-        $objFile = new \File($strPosterPath, file_exists(TL_ROOT . '/' . $strPosterPath));
+        if (!file_exists(TL_ROOT . '/' . $strPosterDir)) {
+            new \Folder($strPosterDir);
+        }
+
+        $objFile = new \File($strPosterPath);
 
         // simple file caching
-        if ($this->tstamp > $objFile->mtime || $objFile->size == 0)
-        {
+        if (!file_exists(TL_ROOT . '/' . $strPosterPath) || $this->tstamp > $objFile->mtime || $objFile->size == 0) {
             list($ytPosterSRC, $strResult, $strImageUrl) = static::getYouTubeImage($this->youtube);
 
-            if (!$ytPosterSRC || !$strResult || !$strImageUrl)
-            {
+            if (!$ytPosterSRC || !$strResult || !$strImageUrl) {
                 return false;
             }
 
@@ -215,8 +203,7 @@ class YouTubeVideo
         $blnCheck = (($this->type == 'youtube' || $this->addYouTube) && $this->youtube != '');
 
         // autoplay video from autoplay youtube id
-        if (\Input::get('autoplay') == $this->youtube || $this->autoplay)
-        {
+        if (\Input::get('autoplay') == $this->youtube || $this->autoplay) {
             $this->autoplay = true;
         }
 
@@ -225,8 +212,7 @@ class YouTubeVideo
 
     public function getYouTubeSrc()
     {
-        if (!$this->init())
-        {
+        if (!$this->init()) {
             return '';
         }
 
@@ -237,8 +223,7 @@ class YouTubeVideo
         $strUrl = \HeimrichHannot\Haste\Util\Url::addQueryString('modestbranding=' . ($this->ytModestBranding ? 1 : 0), $strUrl);
         $strUrl = \HeimrichHannot\Haste\Util\Url::addQueryString('showinfo=' . ($this->ytShowInfo ? 1 : 0), $strUrl);
 
-        if ($this->autoplay || $this->getConfigData('autoplay'))
-        {
+        if ($this->autoplay || $this->getConfigData('autoplay')) {
             $strUrl = \HeimrichHannot\Haste\Util\Url::addQueryString('autoplay=1', $strUrl);
         }
 
@@ -247,14 +232,10 @@ class YouTubeVideo
 
     public static function getYouTubeImage($strID)
     {
-        if (!($strApiKey = \Config::get('youtubeApiKey')))
-        {
-            if (\BackendUser::getInstance()->isAdmin)
-            {
+        if (!($strApiKey = \Config::get('youtubeApiKey'))) {
+            if (\BackendUser::getInstance()->isAdmin) {
                 throw new \Exception('Please specify your API key in the settings if you want to retrieve youtube thumbnails.');
-            }
-            else
-            {
+            } else {
                 \System::log('Please specify your API key in the settings if you want to retrieve youtube thumbnails.', __METHOD__, TL_ERROR);
             }
         }
@@ -265,27 +246,22 @@ class YouTubeVideo
 
             $objResponse = json_decode($strResult);
 
-            if($objResponse->error)
-            {
+            if ($objResponse->error) {
                 return [null, null];
             }
 
-            foreach (['maxres', 'standard', 'high', 'medium', 'default'] as $strQuality)
-            {
-                if (property_exists($objResponse->items[0]->snippet->thumbnails, $strQuality))
-                {
+            foreach (['maxres', 'standard', 'high', 'medium', 'default'] as $strQuality) {
+                if (property_exists($objResponse->items[0]->snippet->thumbnails, $strQuality)) {
                     $varImage = Curl::request($objResponse->items[0]->snippet->thumbnails->{$strQuality}->url);
 
-                    if (!$varImage)
-                    {
+                    if (!$varImage) {
                         return [null, null];
                     }
 
                     return [$strID . '_' . $strQuality . '.jpg', $varImage, $objResponse->items[0]->snippet->thumbnails->{$strQuality}->url];
                 }
             }
-        } catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
             return [null, null];
         }
     }
@@ -309,7 +285,7 @@ class YouTubeVideo
      * Set an object property
      *
      * @param string $strKey
-     * @param mixed  $varValue
+     * @param mixed $varValue
      */
     public function __set($strKey, $varValue)
     {
@@ -326,8 +302,7 @@ class YouTubeVideo
      */
     public function __get($strKey)
     {
-        if (isset($this->arrData[$strKey]))
-        {
+        if (isset($this->arrData[$strKey])) {
             return $this->arrData[$strKey];
         }
     }
@@ -358,8 +333,7 @@ class YouTubeVideo
 
     public function getConfigData($strKey)
     {
-        if (isset($this->arrConfig[$strKey]))
-        {
+        if (isset($this->arrConfig[$strKey])) {
             return $this->arrConfig[$strKey];
         }
     }

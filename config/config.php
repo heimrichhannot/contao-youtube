@@ -20,7 +20,7 @@ $GLOBALS['TL_CTE']['media']['youtube'] = '\\HeimrichHannot\\YouTube\\ContentYouT
 if (TL_MODE == 'FE')
 {
 	$GLOBALS['TL_JAVASCRIPT']['jquery.youtube'] = '/system/modules/youtube/assets/js/jquery.youtube'. (!$GLOBALS['TL_CONFIG']['debugMode'] ? '.min' : '') . '.js|static';
-	$GLOBALS['TL_CSS']['youtube_default'] = '/system/modules/youtube/assets/css/youtube_default.less|screen|static|1.0.0';
+	$GLOBALS['TL_CSS']['youtube_default'] = 'system/modules/youtube/assets/css/youtube_default.css';
 }
 
 /**
