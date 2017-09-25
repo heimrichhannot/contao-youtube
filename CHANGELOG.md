@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.4.2] - 2017-09-25
+
+### Added
+- `news_categories` support, run  youtube `parseArticles` hook after `news_categories` `parseArticles` hook
+
 ## [1.4.1] - 2017-09-05
 
 ### Fixed
