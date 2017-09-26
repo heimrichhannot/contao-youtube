@@ -1,10 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.4.2] - 2017-09-25
+## [1.4.2] - 2017-09-26
 
-### Added
-- `news_categories` support, run  youtube `parseArticles` hook after `news_categories` `parseArticles` hook
+### Changed
+- play-button for preview videos now makes usage of the original youtube play button, taken from [brand resources](https://www.youtube.com/yt/about/brand-resources/)
 
 ## [1.4.1] - 2017-09-05
 
