@@ -16,10 +16,8 @@ class YouTubeHooks extends \Controller
 
     public function parseNewsArticlesHook($objTemplate, $arrNews, $objModule)
     {
-        $related = deserialize($arrNews['relatedYoutubeNews'], true);
-
         // set youtube from related youtube video if no youtube video set on current news
-        if (count($related) === 1 && !$arrNews['addYouTube']) {
+        if ($arrNews['relatedYoutubeNews'] > 0 && !$arrNews['addYouTube']) {
 
             $columns = ["tl_news.id=?"];
 
@@ -28,7 +26,7 @@ class YouTubeHooks extends \Controller
                 $columns[] = "(tl_news.start='' OR tl_news.start<='$time') AND (tl_news.stop='' OR tl_news.stop>'" . ($time + 60) . "') AND tl_news.published='1'";
             }
 
-            if (($relatedNews = \Contao\NewsModel::findBy($columns, [$related[0]])) == null) {
+            if (($relatedNews = \Contao\NewsModel::findBy($columns, [$arrNews['relatedYoutubeNews']])) == null) {
                 return;
             }
 

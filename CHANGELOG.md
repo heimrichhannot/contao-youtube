@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.4.5] - 2017-09-26
+
+### Changed
+- `tl_news.relatedYoutubeNews` from blob to int(10)
+
 ## [1.4.4] - 2017-09-26
 
 ### Added
