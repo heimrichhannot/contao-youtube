@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.4.4] - 2017-09-26
+
+### Added
+- `tl_news.relatedYoutubeNews` can be set within news, if set the video from the related news will be added as youtube video to the current news 
+
 ## [1.4.3] - 2017-09-26
 
 ### Changed
