@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.4.6] - 2017-10-10
+
+### Added
+- `@media print` support
+
 ## [1.4.5] - 2017-09-26
 
 ### Changed

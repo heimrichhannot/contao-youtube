@@ -10,7 +10,18 @@
   padding-bottom: 56.25%;
   /* 16:9 */
 }
-/* line 17, youtube_default.scss */
+@media print {
+  /* line 7, youtube_default.scss */
+  .youtube_default,
+  .youtube_player,
+  .youtube_image {
+    padding-bottom: 0;
+    height: auto;
+    width: auto;
+    overflow: visible;
+  }
+}
+/* line 24, youtube_default.scss */
 .youtube_default iframe,
 .youtube_default object,
 .youtube_default embed,
@@ -28,19 +39,19 @@
   width: 100%;
   border: 0;
 }
-/* line 29, youtube_default.scss */
+/* line 36, youtube_default.scss */
 .youtube_default .video-thumbnail,
 .youtube_player .video-thumbnail,
 .youtube_image .video-thumbnail {
   cursor: pointer;
 }
-/* line 32, youtube_default.scss */
+/* line 39, youtube_default.scss */
 .youtube_default .video-thumbnail .image_container,
 .youtube_player .video-thumbnail .image_container,
 .youtube_image .video-thumbnail .image_container {
   position: relative;
 }
-/* line 35, youtube_default.scss */
+/* line 42, youtube_default.scss */
 .youtube_default .video-thumbnail .image_container .play-button,
 .youtube_player .video-thumbnail .image_container .play-button,
 .youtube_image .video-thumbnail .image_container .play-button {
@@ -60,7 +71,15 @@
   -webkit-transition: opacity 0.25s cubic-bezier(0, 0, 0.2, 1);
   transition: opacity 0.25s cubic-bezier(0, 0, 0.2, 1);
 }
-/* line 53, youtube_default.scss */
+@media print {
+  /* line 42, youtube_default.scss */
+  .youtube_default .video-thumbnail .image_container .play-button,
+  .youtube_player .video-thumbnail .image_container .play-button,
+  .youtube_image .video-thumbnail .image_container .play-button {
+    display: none;
+  }
+}
+/* line 64, youtube_default.scss */
 .youtube_default .video-thumbnail:hover .image_container .play-button,
 .youtube_player .video-thumbnail:hover .image_container .play-button,
 .youtube_image .video-thumbnail:hover .image_container .play-button {
