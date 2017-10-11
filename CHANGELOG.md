@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.4.7] - 2017-10-11
+
+### Fixed
+- catch if `YoutubeVideo::getYouTubeImage` video no longer exists
+
 ## [1.4.6] - 2017-10-10
 
 ### Added

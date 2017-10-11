@@ -246,7 +246,7 @@ class YouTubeVideo
 
             $objResponse = json_decode($strResult);
 
-            if ($objResponse->error) {
+            if ($objResponse->error || !is_array($objResponse->items) || empty($objResponse->items)) {
                 return [null, null];
             }
 
