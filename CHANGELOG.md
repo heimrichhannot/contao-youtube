@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.4.8] - 2017-10-11
+
+### Added
+- format `videoDuration` if numeric to `H:i:s` or `i:s` (if less than one hour)
+
 ## [1.4.7] - 2017-10-11
 
 ### Fixed

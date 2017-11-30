@@ -16,7 +16,7 @@
                     <?php endif; ?>
                     <?php if ($this->videoDuration): ?>
                         <span class="duration">
-                            <?php echo $this->videoDuration; ?>
+                            <?= is_numeric($this->videoDuration) ? (($this->videoDuration / 3600 >= 1) ? gmdate("H:i:s", $this->videoDuration) : gmdate("i:s", $this->videoDuration)) : $this->videoDuration; ?>
                         </span>
                     <?php endif; ?>
                     <?php if ($this->addPlayButton): ?>
