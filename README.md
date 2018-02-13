@@ -13,6 +13,8 @@ Youtube videos can be added to news templates with ease. Just add the following 
 <?php endif; ?>
 ```
 
+To use preview images from youtube, you have to generate an API key (https://developers.google.com/youtube/v3/getting-started) and place it in the contao settings.
+
 ## Features
  
 * Responsive youtube videos (requires jQuery)
