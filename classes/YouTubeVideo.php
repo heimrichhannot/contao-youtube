@@ -11,6 +11,7 @@
 
 namespace HeimrichHannot\YouTube;
 
+use Haste\Util\Url;
 use HeimrichHannot\Haste\Util\Curl;
 
 class YouTubeVideo
@@ -219,15 +220,17 @@ class YouTubeVideo
         $strUrl = $this->getConfigData('youtubePrivacy') ? static::$privacyEmbedSrc : static::$defaultEmbedSrc;
         $strUrl .= $this->youtube;
 
-        $strUrl = \HeimrichHannot\Haste\Util\Url::addQueryString('rel=' . ($this->ytShowRelated ? 1 : 0), $strUrl);
-        $strUrl = \HeimrichHannot\Haste\Util\Url::addQueryString('modestbranding=' . ($this->ytModestBranding ? 1 : 0), $strUrl);
-        $strUrl = \HeimrichHannot\Haste\Util\Url::addQueryString('showinfo=' . ($this->ytShowInfo ? 1 : 0), $strUrl);
+
+        $queryParams = [];
+        $queryParams['rel'] = $this->ytShowRelated ? 1 : 0;
+        $queryParams['modestbranding'] = $this->ytModestBranding ? 1 : 0;
+        $queryParams['showinfo'] = $this->ytShowInfo ? 1 : 0;
 
         if ($this->autoplay || $this->getConfigData('autoplay')) {
-            $strUrl = \HeimrichHannot\Haste\Util\Url::addQueryString('autoplay=1', $strUrl);
+            $queryParams['autoplay'] = 1;
         }
 
-        return $strUrl;
+        return \HeimrichHannot\Haste\Util\Url::addParametersToUri($strUrl, $queryParams);
     }
 
     public static function getYouTubeImage($strID)
@@ -338,3 +341,4 @@ class YouTubeVideo
         }
     }
 }
+

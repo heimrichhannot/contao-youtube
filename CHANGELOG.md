@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.4.10] - 2018-03-16
+
+### Fixed
+- youtube video url did not contain `rel`, `modestbranding`, `showinfo` params
+
 ## [1.4.9] - 2018-02-13
 
 ### Updated
