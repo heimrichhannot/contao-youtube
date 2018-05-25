@@ -78,8 +78,7 @@ class YouTubeVideo
         // always show preview image when in privacy mode
         $this->addPreviewImage = $this->addPreviewImage || $this->getConfigData('youtubePrivacy');
 
-        $objTemplate =
-            new \FrontendTemplate($this->getConfigData('youtube_template') != '' ? $this->getConfigData('youtube_template') : static::$strTemplate);
+        $objTemplate = new \FrontendTemplate($this->getConfigData('youtube_template') != '' ? $this->getConfigData('youtube_template') : static::$strTemplate);
 
         // set from item
         $objTemplate->setData($this->getData());
@@ -134,30 +133,34 @@ class YouTubeVideo
                 $singleSRC = $objModel->path;
             }
         }
-
         // add youtube thumbnail
-        if ($singleSRC == '') {
+        if ($singleSRC == '' || !file_exists(TL_ROOT . '/' . $singleSRC)) {
             if ($this->skipImageCaching) {
                 $objTemplate->skipImageCaching = $this->skipImageCaching;
 
                 list($ytPosterSRC, $strResult, $objTemplate->previewImageUrl) = static::getYouTubeImage($this->youtube);
+
+                return;
             } else {
-                if (($singleSRC = static::getCachedYouTubePreviewImage()) !== false && file_exists(TL_ROOT . '/' . $singleSRC)) {
-                    $arrImage['singleSRC'] = $singleSRC;
-                    $arrImage['alt']       = 'youtube-image-' . $this->youtube;
-
-                    if ($this->getConfigData('imgSize') != '' || $this->getConfigData('size')) {
-                        $size = deserialize($this->getConfigData('imgSize') ? $this->getConfigData('imgSize') : $this->getConfigData('size'));
-
-                        if ($size[0] > 0 || $size[1] > 0 || is_numeric($size[2])) {
-                            $arrImage['size'] = $size;
-                        }
-                    }
-
-                    \Controller::addImageToTemplate($objTemplate, $arrImage);
+                if (($cachedSingleSRC = static::getCachedYouTubePreviewImage()) !== false && file_exists(TL_ROOT . '/' . $cachedSingleSRC)) {
+                    $singleSRC = $cachedSingleSRC;
+                } else {
+                    return;
                 }
             }
         }
+        $arrImage['singleSRC'] = $singleSRC;
+        $arrImage['alt']       = 'youtube-image-' . $this->youtube;
+
+        if ($this->getConfigData('imgSize') != '' || $this->getConfigData('size')) {
+            $size = deserialize($this->getConfigData('imgSize') ? $this->getConfigData('imgSize') : $this->getConfigData('size'));
+
+            if ($size[0] > 0 || $size[1] > 0 || is_numeric($size[2])) {
+                $arrImage['size'] = $size;
+            }
+        }
+
+        \Controller::addImageToTemplate($objTemplate, $arrImage);
     }
 
     public function getCachedYouTubePreviewImage()
@@ -189,9 +192,7 @@ class YouTubeVideo
 
     protected function generatePrivacy()
     {
-        $objTemplate = new \FrontendTemplate(
-            $this->getConfigData('youtubeprivacy_template') != '' ? $this->getConfigData('youtubeprivacy_template') : static::$strPrivacyTemplate
-        );
+        $objTemplate = new \FrontendTemplate($this->getConfigData('youtubeprivacy_template') != '' ? $this->getConfigData('youtubeprivacy_template') : static::$strPrivacyTemplate);
         $objTemplate->setData($GLOBALS['TL_LANG']['MSC']['youtube']['privacy']);
         $objTemplate->autoLabel = sprintf($objTemplate->autoLabel, \Environment::get('host'));
 
@@ -221,10 +222,10 @@ class YouTubeVideo
         $strUrl .= $this->youtube;
 
 
-        $queryParams = [];
-        $queryParams['rel'] = $this->ytShowRelated ? 1 : 0;
+        $queryParams                   = [];
+        $queryParams['rel']            = $this->ytShowRelated ? 1 : 0;
         $queryParams['modestbranding'] = $this->ytModestBranding ? 1 : 0;
-        $queryParams['showinfo'] = $this->ytShowInfo ? 1 : 0;
+        $queryParams['showinfo']       = $this->ytShowInfo ? 1 : 0;
 
         if ($this->autoplay || $this->getConfigData('autoplay')) {
             $queryParams['autoplay'] = 1;
@@ -288,7 +289,7 @@ class YouTubeVideo
      * Set an object property
      *
      * @param string $strKey
-     * @param mixed $varValue
+     * @param mixed  $varValue
      */
     public function __set($strKey, $varValue)
     {

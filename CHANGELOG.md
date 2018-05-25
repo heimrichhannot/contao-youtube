@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.4.11] - 2018-05-25
+
+### Fixed
+- custom preview image
+
 ## [1.4.10] - 2018-03-16
 
 ### Fixed
