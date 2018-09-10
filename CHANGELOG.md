@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.5.0] - 2018-09-10
+
+### Changed
+- don't add javascript and css to globals when youtube-bundle exists 
+
 ## [1.4.11] - 2018-05-25
 
 ### Fixed

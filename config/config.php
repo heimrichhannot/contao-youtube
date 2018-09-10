@@ -17,7 +17,7 @@ $GLOBALS['TL_CTE']['media']['youtube'] = '\\HeimrichHannot\\YouTube\\ContentYouT
 /**
  * Assets
  */
-if (TL_MODE == 'FE')
+if (TL_MODE == 'FE' && !class_exists(HeimrichHannot\YoutubeBundle\HeimrichHannotContaoYoutubeBundle::class))
 {
 	$GLOBALS['TL_JAVASCRIPT']['jquery.youtube'] = '/system/modules/youtube/assets/js/jquery.youtube'. (!$GLOBALS['TL_CONFIG']['debugMode'] ? '.min' : '') . '.js|static';
 	$GLOBALS['TL_CSS']['youtube_default'] = 'system/modules/youtube/assets/css/youtube_default.css';
