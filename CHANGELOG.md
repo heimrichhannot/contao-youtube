@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.5.1] - 2019-10-29
+
+### Fixed
+- error due changes in version 1.4.5 (reverted these changes)
+
 ## [1.5.0] - 2018-09-10
 
 ### Changed
